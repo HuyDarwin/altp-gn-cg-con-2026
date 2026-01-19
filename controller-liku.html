@@ -1,0 +1,671 @@
+<head>
+  <title>Controller</title> 
+  
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
+	<script type="text/javascript" src="JS/accounting.min.js"></script>
+	<script type="text/javascript" src="JS/init.js"></script>
+  
+	<script type="module" src="JS/firebase.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/controller_fb.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_controller.css">
+	
+  <meta charset="utf-8" />
+</head>
+<body>
+  <div class="stage">
+    
+    <div class="holder" id="background">
+
+    </div>     
+    
+    <div class="holder" id="holder-1">
+      
+      <p class="holder-title">
+        XEM TRƯỚC
+      </p>
+      
+      <iframe src="main-trup.html" class="screen-iframe" id="i-main" style="background-color:gray;"></iframe>
+      <iframe src="moneytree-pola.html" class="screen-iframe" id="i-moneytree" style="background-color:gray;" muted></iframe>
+      
+    </div>
+    
+    <div class="holder" id="holder-2">
+      
+      <p class="holder-title">
+        
+      </p>
+      
+      <input type="file" accept=".xls,.xlsx,.ods" class="get-c-info" />
+      <input type="file" accept=".xls,.xlsx,.ods" class="get-mt-info" />
+      <input type="file" accept=".xls,.xlsx,.ods" class="get-q-info" />
+      <input type="file" accept=".xls,.xlsx,.ods" class="get-sq-info" />
+      
+      <button class="load-c-info">Load TTNC</button>
+      <button class="load-mt-info">Load MT</button>
+      <button class="load-q-info">Load CH</button>
+      <button class="load-sq-info">Load CH Đổi</button>
+      
+      <textarea class="question" disabled></textarea>
+      
+      <p class="ans-letter" id="ans-letter-a">A</p>      
+      <textarea class="ans-text" id="ans-text-a" disabled></textarea>
+      
+      <p class="ans-letter" id="ans-letter-b">B</p>      
+      <textarea class="ans-text" id="ans-text-b" disabled></textarea>
+      
+      <p class="ans-letter" id="ans-letter-c">C</p>      
+      <textarea class="ans-text" id="ans-text-c" disabled></textarea>
+      
+      <p class="ans-letter" id="ans-letter-d">D</p>      
+      <textarea class="ans-text" id="ans-text-d" disabled></textarea>
+      
+      <p class="q-left-info"></p>
+      <p class="c-left-info"></p>
+      
+      <p class="c-now-info"></p>      
+      <button class="c-now-prev">←</button>
+      <button class="c-now-next">→</button>
+      
+      <p class="cp-now-info"></p>      
+      <button class="cp-now-prev">←</button>
+      <button class="cp-now-next">→</button>
+      
+      <p class="ar-info"></p>
+      <button class="ar-on">✓</button>
+      <button class="ar-off">✗</button>
+      
+      <p class="qw-info"></p>
+      <p class="tw-info"></p>
+    </div> 
+    
+    <div class="holder" id="holder-3">
+      
+      <p class="holder-title">
+        DEBUG
+      </p>
+      
+      <div class="rel">
+        <button class="reload">
+          Reload
+        </button>    
+        
+        <button class="to-main">
+          Xem Main
+        </button>     
+        
+        <button class="to-moneytree">
+          Xem Moneytree
+        </button>   
+        
+        <button class="edit-passkey">
+          Thay đổi mật khẩu
+        </button>
+        
+        <button class="reload-auth">
+          Reload Auth
+        </button>   
+      </div>
+      
+    </div>  
+    
+    <div class="holder" id="holder-4">
+      
+      <p class="holder-title">
+        PHẦN CHÍNH
+      </p> 
+      
+      <div class="rel">
+        <button class="select-mode" id="sm-fff">
+          BBPN sắp xếp
+        </button>
+        <button class="select-mode" id="sm-main">
+          Chính
+        </button>
+      </div>
+      
+      <div class="h4-system" id="h4s-fff" style="width:100%;height:100%;top:1920px;left:0%;">
+        <select class="list-fff-qs" size="15"></select>
+        
+        <p class="fff-q-using-index"></p>
+        <button class="fff-prev" disabled>←</button>
+        <button class="fff-submit" disabled>Dùng</button>
+        <button class="fff-next" disabled>→</button>
+        
+        <button id="h4s-fff-1">GT người chơi</button>
+        <button id="h4s-fff-2" disabled>Hiện câu hỏi</button>
+        <button id="h4s-fff-3" disabled>Hiện thứ tự</button>
+        
+        <button id="h4s-fff-4">Hiện BXH</button>
+        <button id="h4s-fff-5">Reset</button>
+        
+        <button id="h4s-fff-6">Tự động sang câu hỏi</button>
+        <button id="h4s-fff-7">Tự động chọn người cầm séc</button>
+        
+        <p class="fff-q-now-info"></p>        
+        <p class="time-left-info"></p>
+        
+        <button class="fff-player-enable" id="fpe-1"></button>
+        <button class="fff-player-enable" id="fpe-2"></button>
+        <button class="fff-player-enable" id="fpe-3"></button>
+        <button class="fff-player-enable" id="fpe-4"></button>
+        <button class="fff-player-enable" id="fpe-5"></button>
+        <button class="fff-player-enable" id="fpe-6"></button>
+        
+        <table class="fff-results-table">
+          <tr class="frt-1">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+          <tr class="frt-2">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+          <tr class="frt-3">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+          <tr class="frt-4">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+          <tr class="frt-5">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+          <tr class="frt-6">
+            <td class="frt-name">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-answer">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-score">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+            <td class="frt-total-times">
+              <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+              </svg>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="h4-system" id="h4s-main" style="width:100%;height:100%;top:1920px;left:0%;">
+        <select class="list-main-qs" size="15"></select>
+        
+        <p class="main-q-using-index"></p>
+        <button class="main-prev" disabled>←</button>
+        <button class="main-submit" disabled>Dùng</button>
+        <button class="main-next" disabled>→</button>
+        
+        <button id="h4s-main-1">Vào câu hỏi</button>
+        <button id="h4s-main-2" disabled>Hiện câu hỏi</button>
+        <button id="h4s-main-3" disabled>Chạy đồng hồ</button>
+        <button id="h4s-main-4" disabled>Chuyển</button>
+        
+        <p class="main-time-left-info"></p>
+        
+        <button id="h4s-main-5" disabled>A</button>
+        <button id="h4s-main-6" disabled>B</button>
+        <button id="h4s-main-7" disabled>C</button>
+        <button id="h4s-main-8" disabled>D</button>
+        <button id="h4s-main-9" disabled>Xoá</button>
+        <button id="h4s-main-10" disabled>Công bố</button>
+        <button id="h4s-main-11">Tổng tiền</button>
+        
+        <button id="h4s-main-12">Quảng cáo</button>
+        
+        <p class="mtd-text">Đồ hoạ mốc tối đa mới:</p>
+        
+        <button id="h4s-main-15">14</button>
+        <button id="h4s-main-16">13</button>
+        <button id="h4s-main-17">12</button>
+        <button id="h4s-main-18">11</button>
+        <button id="h4s-main-19">10</button>  
+        
+        <p class="ap-text">NC còn lại:</p>
+        <button class="ap-button" id="h4s-main-20">1</button>
+        <button class="ap-button" id="h4s-main-21">2</button>
+        <button class="ap-button" id="h4s-main-22">3</button>
+        <button class="ap-button" id="h4s-main-23">4</button>
+        <button class="ap-button" id="h4s-main-24">5</button>
+        <button class="ap-button" id="h4s-main-25">6</button>
+        
+        <button id="h4s-main-13">Reset câu hỏi</button>        
+        <button id="h4s-main-14">Reset</button>
+      </div>
+      
+    </div>    
+    
+    <div class="holder" id="holder-5">
+      
+      <p class="holder-title">
+        ÂM NHẠC
+      </p> 
+      
+      <div class="rel">
+        <button class="autoname" id="sfx_intro">Intro</button>
+        <button class="autoname" id="sfx_next_player_3">NC tiếp 3</button>
+        <button class="autoname" id="sfx_next_player_1">NC tiếp 1</button>
+        <button class="autoname" id="sfx_next_player_2">NC tiếp 2</button>
+        <button class="autoname" id="sfx_bumper_in">Vào QC</button>
+        <button class="autoname" id="sfx_bumper_out">Hết QC</button>
+        <button class="autoname" id="sfx_closer">Kết thúc</button>
+        <button class="autoname" id="sfx_rules">Luật chơi</button>
+        <button class="autoname" id="sfx_ambiance">Nhạc nền Q1-5</button>
+        <button class="autoname" id="sfx_closer_long">Kết thúc (Dài)</button>
+        <button class="autoname" id="pause_bed" style="background-color:purple;">Tạm dừng nhạc nền</button>
+        <button class="autoname" id="resume_bed" style="background-color:purple;">Tiếp tục nhạc nền</button>
+        <button class="autoname" id="stop_sounds" style="background-color:red;">Dừng hết âm nhạc</button>
+      </div>
+      
+    </div> 
+    
+    <div class="holder" id="holder-6">
+      
+      <p class="holder-title">
+        TRỢ GIÚP
+      </p> 
+      
+      <div class="ll-options" id="llo-pass">
+        <p class="llo-number">Chuyển</p>
+        <button class="llo-activate-pass"></button>
+      </div>
+      
+      <div class="ll-options" id="llo-1">
+        <p class="llo-number">1</p>
+        <button class="llo-activate" id="loa-1"></button>
+      </div>
+      
+      <div class="ll-options" id="llo-2">
+        <p class="llo-number">2</p>
+        <button class="llo-activate" id="loa-2"></button>
+      </div>
+      
+      <button class="ll-holder-toggle">
+        Hiện TTG
+      </button>
+      
+      <div class="rel">
+        <button class="ll-window-open" id="llwo-ff">50:50</button>
+        <button class="ll-window-open" id="llwo-stq">Đổi câu hỏi</button>
+      </div>
+      
+      <div class="ll-window">
+        <div class="llw-title">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <div class="llw-inner">
+          <div class="llw-inner-content" id="llwic-ff">
+            <button id="ll-ff-a" disabled>Đáp án A</button>
+            <button id="ll-ff-b" disabled>Đáp án B</button>
+            <button id="ll-ff-c" disabled>Đáp án C</button>
+            <button id="ll-ff-d" disabled>Đáp án D</button>
+            <button id="ll-ff-random" disabled>Ngẫu nhiên</button>
+            <button id="ll-ff-activate" disabled>Kích hoạt</button>
+          </div>
+          
+          <div class="llw-inner-content" id="llwic-stq">
+            <select class="list-switch-qs" size="15"></select>
+
+            <p class="switch-q-using-index"></p>
+            <button class="switch-prev" disabled>←</button>
+            <button class="switch-submit" disabled>Dùng</button>
+            <button class="switch-next" disabled>→</button>
+            
+            <button id="stq-activate">Kích hoạt</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="holder" id="holder-7">
+      
+      <p class="holder-title">
+        THANG TIỀN THƯỞNG
+      </p> 
+
+      <div class="lifeline" id="ll-pass">
+        <img class="ll-icon" src="Assets/Monitor_Moneytree/pass_monitor.png" style="width:100%;height:100%;" />
+        <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+      </div> 
+
+      <div class="lifeline" id="ll-1">
+        <img class="ll-icon" src="Assets/Monitor_Moneytree/5050_monitor.png" style="width:100%;height:100%;" />
+        <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+      </div> 
+
+      <div class="lifeline" id="ll-2">
+        <img class="ll-icon" src="Assets/Monitor_Moneytree/stq_monitor.png" style="width:100%;height:100%;" />
+        <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+      </div>
+      
+      <div class="mt-follower-toggle-holder">
+        <div class="mt-follower-toggle" id="mtft-15">
+          <button class="q-top-follower-set" id="qtf-15"></button>
+          <button class="q-now-follower-set" id="qnf-15"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-14">
+          <button class="q-top-follower-set" id="qtf-14"></button>
+          <button class="q-now-follower-set" id="qnf-14"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-13">
+          <button class="q-top-follower-set" id="qtf-13"></button>
+          <button class="q-now-follower-set" id="qnf-13"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-12">
+          <button class="q-top-follower-set" id="qtf-12"></button>
+          <button class="q-now-follower-set" id="qnf-12"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-11">
+          <button class="q-top-follower-set" id="qtf-11"></button>
+          <button class="q-now-follower-set" id="qnf-11"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-10">
+          <button class="q-top-follower-set" id="qtf-10"></button>
+          <button class="q-now-follower-set" id="qnf-10"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-9">
+          <button class="q-now-follower-set" id="qnf-9"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-8">
+          <button class="q-now-follower-set" id="qnf-8"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-7">
+          <button class="q-now-follower-set" id="qnf-7"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-6">
+          <button class="q-now-follower-set" id="qnf-6"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-5">
+          <button class="q-now-follower-set" id="qnf-5"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-4">
+          <button class="q-now-follower-set" id="qnf-4"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-3">
+          <button class="q-now-follower-set" id="qnf-3"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-2">
+          <button class="q-now-follower-set" id="qnf-2"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-1">
+          <button class="q-now-follower-set" id="qnf-1"></button>
+        </div>
+        <div class="mt-follower-toggle" id="mtft-16" style="top:1920px;">
+          <button class="q-now-follower-set" id="qnf-16"></button>
+        </div>
+      </div>
+      
+      <div class="moneytree">
+        
+      </div>
+      
+      <div class="q-now-toggle">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+        <button class="q-now-up">↑</button>
+        <button class="q-now-down">↓</button>
+      </div>
+      
+      <div class="q-top-toggle">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+        <button class="q-top-up">↑</button>
+        <button class="q-top-down">↓</button>
+      </div>
+        
+      <button class="auto-set-follower">Tự động chuyển Follower</button>
+      
+    </div>
+    
+    <div class="holder" id="holder-8">
+      
+      <p class="holder-title">
+        KHÁC
+      </p> 
+      
+      <textarea class="message-to-host" placeholder="Gửi tin nhắn cho Host..."></textarea>
+      <button class="message-to-host-submit">Gửi</button>
+      <p class="q-note-title">Ghi chú câu hỏi:</p>
+      <textarea class="question-note" disabled></textarea>
+      
+    </div>
+    
+    <div class="popup" id="popup-passkey">
+      <p class="popup-title">Thay đổi mật khẩu</p>
+      <button class="popup-close">X</button>
+      
+      <div class="popup-passkey-player" id="ppp_player_1">
+        <textarea class="ppp-input" placeholder="Người chơi 1..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_player_2">
+        <textarea class="ppp-input" placeholder="Người chơi 2..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_player_3">
+        <textarea class="ppp-input" placeholder="Người chơi 3..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_player_4">
+        <textarea class="ppp-input" placeholder="Người chơi 4..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_player_5">
+        <textarea class="ppp-input" placeholder="Người chơi 5..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_player_6">
+        <textarea class="ppp-input" placeholder="Người chơi 6..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <div class="popup-passkey-player" id="ppp_host">
+        <textarea class="ppp-input" placeholder="Dẫn chương trình..."></textarea>
+        <button class="ppp-submit">Cập nhật</button>
+        
+        <div class="ppp-pass">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        <button class="ppp-random">Ngẫu nhiên</button>
+      </div>
+      
+      <textarea class="popup-passkey-copy" disabled></textarea>
+      
+    </div>
+    
+  </div>
+  
+  <script>
+    document.body.style.zoom = "75%";
+  </script>
+  
+</body>

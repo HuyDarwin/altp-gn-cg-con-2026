@@ -1,0 +1,308 @@
+body {
+  
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: translate(2%, 75%) scale(1);
+  }
+  50% {
+    transform: translate(0%, 75%) scale(1.1);
+  }
+  100% {
+    transform: translate(2%, 75%) scale(1);
+  };
+}
+
+.stage{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
+  z-index:0;
+}
+
+.holder{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+}
+
+#background{
+  background-image: none;
+  /* 
+  background-image: url('https://cdn.glitch.global/1e0ed98c-8cea-492e-ab8c-1dec944f253e/Quem%20Quer%20Ser%20Milion%C3%A1rio%20-%20Alta%20Press%C3%A3o%20_%20Ep.%2002%20_%20RTP%201-43%20screenshot.png?v=1744801347446');
+  */
+  background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+  opacity:1;
+}
+
+/* mt-hold */
+#mt-hold{
+  opacity:1;
+}
+
+.mt-container{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-bg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-bg-vid{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  clip-path:inset(0% 0% 0% 62.5%);
+}
+
+#ll-pass{
+  left:63.8%;
+  top:9.2%;
+  width:10.6%;
+  height:11.5%;
+}
+
+#ll-pass .ll-used{
+  opacity:0;
+}
+
+.mt-cont-name{
+  width:22%;
+  height:6%;
+  top:8%;
+  left:76%;
+}
+
+.mt-cont-name svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-cont-name svg text{
+  font-family:"Copperplate-Viethoa";
+  font-size:50px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(85%);
+}
+
+.mt-q-left{
+  width:22%;
+  height:3%;
+  top:14.25%;
+  left:76%;
+}
+
+.mt-q-left svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-q-left svg text{
+  font-family:"Copperplate-Viethoa";
+  font-size:28px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(80%);
+}
+
+.mt-c-left{
+  width:22%;
+  height:3%;
+  top:17.5%;
+  left:76%;
+}
+
+.mt-c-left svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-c-left svg text{
+  font-family:"Copperplate-Viethoa";
+  font-size:28px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(80%);
+}
+
+.moneytree{
+  width:38.5%;
+  height:76%;
+  top:23%;
+  right:0%;
+  line-height: 0.7;
+	font-size: 0;
+	border-collapse:collapse;
+  table-layout:fixed;
+}
+
+.moneyTr{
+  position:relative;
+}
+
+.moneyTd-prize{
+  width:74.25%;
+  height:100%;
+  top:0%;
+  left:15.75%;
+}
+
+.moneyTd-prize svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  color:red;
+}
+
+#moneyTd-lp{
+  background-image: url("../Assets/lq.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-lp svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translate(2%, 75%);
+}
+
+#moneyTd-et3{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+  opacity:0.25;
+}
+
+#moneyTd-et3 svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translate(2%, 75%);
+}
+
+#moneyTd-t{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-t svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:#dcd5d6;
+  transform:translate(2%, 75%);
+}
+
+#moneyTd-nlp{
+  background-image: url("../Assets/lq.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-nlp svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translate(2%, 75%);
+  animation: zoomInOut 1s linear infinite;
+}
+
+#moneyTd-nt{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-nt svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:#dcd5d6;
+  transform:translate(2%, 75%);
+  animation: zoomInOut 1s linear infinite;
+}
+
+#moneyTd-cm{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-cm svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:#ffb2d6;
+  transform:translate(2%, 75%);
+}
+
+#moneyTd-cn{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-cn svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:#cf387f;
+  transform:translate(2%, 75%);
+}

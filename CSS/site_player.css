@@ -1,0 +1,1162 @@
+body {
+  background-color:black;
+}
+
+button {
+	cursor: pointer;
+	font-family:"Tahoma";
+	border-width:2%;
+  border-color:white;
+  background-color:black;
+  color:white;
+}
+
+button:hover {
+	background-color:white;
+  color:black;
+	transition: 0.25s;
+}
+
+button:disabled {
+  opacity:0.5;
+}
+
+button:disabled:hover {
+  background-color:black;
+  color:white;
+  transition: 0.25s;
+}
+
+textarea{
+  color:white;
+  background-color:black;
+  resize:none;
+  
+  font-family:"Tahoma";
+  font-size:20px;
+  
+  border: 2px solid white;  
+}
+
+.stage{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
+  z-index:0;
+}
+
+.holder{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+}
+
+#background{
+  background-image: url("../Assets/vlcsnap-2025-04-18-21h02m25s868.png");
+  background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+  opacity:1;
+  filter: brightness(50%);
+}
+
+/* holder-1 */
+
+#holder-1{
+  top:1920px;
+}
+
+.fff-q-gpx{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.question{
+  width:100%;
+  height:15%;
+  top:1%;
+  left:0%;
+}
+
+.question svg{
+  left:14%;
+  width:72%;
+  height:85%;
+  top:8%;
+}
+
+.question svg text {
+  font-family:"Verdana";
+  font-size:56px;
+}
+
+.answer{
+  width:50%;
+  height:8.5%;
+}
+
+.ans-letter{
+  left:0%;
+  width:100%;
+  height:100%;
+  top:0%;
+}
+
+.ans-text{
+  left:0%;
+  width:100%;
+  height:100%;
+  top:0%;
+}
+
+.ans-letter svg {
+  width:6%;
+  height:85%;
+  bottom:8%;
+}
+
+.ans-letter svg text{
+  font-family:'Arial';
+  font-size:40px;
+  font-weight:bold;
+  fill:#ecac17;
+  transform:translateY(70%);
+}
+
+#ans-letter-a svg, #ans-letter-c svg{
+  left:25%;
+}
+
+#ans-letter-b svg, #ans-letter-d svg{
+  left:8%;
+}
+
+.ans-text svg {
+  width:64%;
+  height:85%;
+  bottom:8%;
+}
+
+.ans-text svg text{
+  font-family:'Arial';
+  font-size:40px;
+  font-weight:bold;
+  fill:white;
+  transform:translateY(70%);
+}
+
+#ans-text-a svg, #ans-text-c svg{
+  left:31.5%;
+}
+
+#ans-text-b svg, #ans-text-d svg{
+  left:14.5%;
+}
+
+#answer-a{
+  left:0%;
+  top:17%;
+}
+
+#answer-b{
+  right:0%;
+  top:17%;
+}
+
+#answer-c{
+  left:0%;
+  top:26%;
+}
+
+#answer-d{
+  right:0%;
+  top:26%;
+}
+
+.fff-answer-info{
+  width:90%;
+  left:5%;
+  top:37.5%;
+  height:7.5%;
+  background-color:black;
+  border:2px solid aqua;
+}
+
+.fff-answer-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.fff-input-answer{
+  top:0%;
+  height:100%;
+  width:49%;
+  left:0%;
+}
+
+.fff-input-answer svg text{
+  font-family:"Verdana";
+  font-size:48px;
+  transform:translateY(75%);
+  fill:#ecac17;
+}
+
+.fff-final-answer{
+  top:0%;
+  height:100%;
+  width:24%;
+  left:50%;
+}
+
+.fff-final-answer svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+}
+
+.fff-times{
+  top:0%;
+  height:100%;
+  width:25%;
+  left:75%;
+}
+
+.fff-times svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+}
+
+.fff-del{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:15%;
+  left:5%;
+}
+
+.fff-a{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:15%;
+  left:20.25%;
+}
+
+.fff-b{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:15%;
+  left:35.5%;
+}
+
+.fff-c{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:15%;
+  left:50.75%;
+}
+
+.fff-d{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:15%;
+  left:66%;
+}
+
+.fff-enter{
+  top:45.5%;
+  height:21.5%;
+  font-size:120px;
+  font-weight:bold;
+  width:13.75%;
+  left:81.25%;
+}
+
+.fff-total-info{
+  width:90%;
+  left:5%;
+  top:67.5%;
+  height:7.5%;
+  background-color:black;
+  border:2px solid aqua;
+}
+
+.fff-total-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.fff-name{
+  top:0%;
+  height:100%;
+  width:49%;
+  left:0%;
+}
+
+.fff-name svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+}
+
+.fff-total-score{
+  top:0%;
+  height:100%;
+  width:24%;
+  left:50%;
+}
+
+.fff-total-score svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+}
+
+.fff-total-times{
+  top:0%;
+  height:100%;
+  width:25%;
+  left:75%;
+}
+
+.fff-total-times svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+}
+
+.fff-warning{
+  width:90%;
+  height:7%;
+  left:5%;
+  top:76%;
+}
+
+.fff-warning svg {
+  width:100%;
+  left:0%;
+  height:100%;
+  top:0%;
+}
+
+.fff-warning svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(75%);
+  fill:white;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.fff-q-no-text{
+  width:29%;
+  height:15%;
+  left:5%;
+  top:85%;
+}
+
+.fff-q-no-text svg {
+  width:100%;
+  left:0%;
+  height:100%;
+  top:0%;
+}
+
+.fff-q-no-text svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(60%);
+  fill:white;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.fff-q-no-number{
+  width:14%;
+  height:15%;
+  left:35%;
+  top:85%;
+}
+
+.fff-q-no-number svg {
+  width:100%;
+  left:0%;
+  height:100%;
+  top:0%;
+}
+
+.fff-q-no-number svg text{
+  font-family:"Arial";
+  font-size:160px;
+  font-weight:bold;
+  transform:translateY(85%);
+  fill:white;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.fff-time-left-text{
+  width:29%;
+  height:15%;
+  left:50%;
+  top:85%;
+}
+
+.fff-time-left-text svg {
+  width:100%;
+  left:0%;
+  height:100%;
+  top:0%;
+}
+
+.fff-time-left-text svg text{
+  font-family:"Arial";
+  font-size:48px;
+  font-weight:bold;
+  transform:translateY(60%);
+  fill:white;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.fff-time-left-number{
+  width:15%;
+  height:15%;
+  left:80%;
+  top:85%;
+}
+
+.fff-time-left-number svg {
+  width:100%;
+  left:0%;
+  height:100%;
+  top:0%;
+}
+
+.fff-time-left-number svg text{
+  font-family:"Arial";
+  font-size:160px;
+  font-weight:bold;
+  transform:translateY(85%);
+  fill:white;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+/* holder-2 */
+#holder-2 {
+  top:1920px;
+}
+
+.main-q-gpx{
+  width:70%;
+  height:100%;
+  top:30%;
+  left:0%;
+}
+
+.mt-container{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-bg{
+  width:30%;
+  height:100%;
+  top:0%;
+  left:70%;
+  background-image:url("../Assets/vlcsnap-2025-04-18-21h02m25s868.png");
+}
+
+#ll-pass{
+  left:71%;
+  top:2%;
+  width:9%;
+  height:10%;
+}
+
+#ll-pass .ll-used{
+  opacity:0;
+}
+
+#ll-1{
+  left:81%;
+  top:2%;
+  width:9%;
+  height:10%;
+}
+
+#ll-1 .ll-used{
+  opacity:0;
+}
+
+#ll-2{
+  left:91%;
+  top:2%;
+  width:9%;
+  height:10%;
+}
+
+#ll-2 .ll-used{
+  opacity:0;
+}
+
+.mt-cont-name{
+  width:22%;
+  height:6%;
+  top:12.5%;
+  left:71%;
+}
+
+.mt-cont-name svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-cont-name svg text{
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:50px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(85%);
+}
+
+.mt-q-left{
+  width:22%;
+  height:4%;
+  top:18.5%;
+  left:71%;
+}
+
+.mt-q-left svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-q-left svg text{
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:32px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.mt-c-left{
+  width:22%;
+  height:4%;
+  top:22%;
+  left:71%;
+}
+
+.mt-c-left svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.mt-c-left svg text{
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:32px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.moneytree{
+  width:31%;
+  height:76%;
+  top:27%;
+  right:0%;
+  line-height: 0.7;
+	font-size: 0;
+	border-collapse:collapse;
+  table-layout:fixed;
+}
+
+.moneyTr{
+  position:relative;
+}
+
+.moneyTd-prize{
+  width:90%;
+  height:100%;
+  top:0%;
+  left:5.5%;
+}
+
+.moneyTd-prize svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+#moneyTd-lp{
+  background-image: url("../Assets/Monitor_Moneytree/khung moc trieu phu vang.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:100%;
+  height:7%;
+  top:0%;
+  left:0%;
+  position:relative;
+}
+
+#moneyTd-lp svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 80%) scaleY(0.9);
+}
+
+#moneyTd-et3{
+  background-image: url("../Assets/Monitor_Moneytree/khung tim.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+  opacity:0.5;
+}
+
+#moneyTd-et3 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+#moneyTd-t3{
+  background-image: url("../Assets/Monitor_Moneytree/khung tim.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+}
+
+#moneyTd-t3 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+#moneyTd-t2{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh duong dam.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+}
+
+#moneyTd-t2 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+#moneyTd-t1{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh duong.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+}
+
+#moneyTd-t1 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+#moneyTd-nlp{
+  background-image: url("../Assets/Monitor_Moneytree/khung moc trieu phu vang.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:100%;
+  height:7%;
+  top:0%;
+  left:0%;
+  position:relative;
+}
+
+#moneyTd-nlp svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 80%) scaleY(0.9);
+}
+
+#moneyTd-nt3{
+  background-image: url("../Assets/Monitor_Moneytree/khung tim 1.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:100%;
+  height:7.5%;
+  top:0%;
+  left:0%;
+  position:relative;
+}
+
+#moneyTd-nt3 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  letter-spacing:7.5px;
+  fill:black;
+  transform:translate(0%, 72.5%) scaleY(1.1);
+}
+
+#moneyTd-nt2{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh duong dam 2.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:100%;
+  height:7.5%;
+  top:0%;
+  left:0%;
+  position:relative;
+}
+
+#moneyTd-nt2 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  letter-spacing:7.5px;
+  fill:black;
+  transform:translate(0%, 72.5%) scaleY(1.1);
+}
+
+#moneyTd-nt1{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh duong 1.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:100%;
+  height:7.5%;
+  top:0%;
+  left:0%;
+  position:relative;
+}
+
+#moneyTd-nt1 svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  letter-spacing:7.5px;
+  fill:black;
+  transform:translate(0%, 72.5%) scaleY(1.1);
+}
+
+#moneyTd-cm{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh luc.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+}
+
+#moneyTd-cm svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  letter-spacing:7.5px;
+  fill:white;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+#moneyTd-cn{
+  background-image: url("../Assets/Monitor_Moneytree/khung xanh luc.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:1;
+  width:96.5%;
+  height:5.85%;
+  top:0%;
+  left:3.5%;
+  position:relative;
+}
+
+#moneyTd-cn svg text {
+  font-family:"Arial";
+  font-weight:bold;
+  font-size:36px;
+  letter-spacing:7.5px;
+  fill:black;
+  transform:translate(0%, 72.5%) scaleY(0.9);
+}
+
+.main-timer{
+  width:6%;
+  height:10%;
+  left:32%;
+  top:66%;
+  background-color:black;
+  border:2px solid aqua;
+}
+
+.main-timer svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.main-timer svg text{
+  font-family:"Verdana";
+  font-size:48px;
+  fill:white;
+  transform:translateY(70%);
+}
+
+/* For host */
+
+#holder-1-host{
+  top:1920px;
+}
+
+.fff-results-table{
+  width:98%;
+  left:1%;
+  top:37.5%;
+  height:20%;
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: aqua;
+  border-collapse:collapse;
+  background-color:black;
+}
+
+.fff-results-table td{
+  border-width: 1px;
+  border-style: solid;
+  border-color: aqua;
+  border-collapse:collapse;
+}
+
+.frt-name{
+  width:40%;
+}
+
+.frt-name svg{
+  width:100%;
+  height:55px;
+  left:0%;
+  top:0%;
+  position:relative;
+}
+
+.frt-name svg text{
+  font-family:"Tahoma";
+  font-size:36px;
+  fill:white;
+  transform:translateY(75%);
+}
+
+.frt-answer, .frt-times, .frt-total-score, .frt-total-times{
+  width:15%;
+}
+
+.frt-answer svg, .frt-times svg, .frt-total-score svg, .frt-total-times svg{
+  width:100%;
+  height:55px;
+  left:0%;
+  top:0%;
+  position:relative;
+}
+
+.frt-answer svg text, .frt-times svg text{
+  font-family:"Tahoma";
+  font-size:36px;
+  fill:#ecac17;
+  transform:translateY(75%);
+}
+
+.frt-total-score svg text, .frt-total-times svg text{
+  font-family:"Tahoma";
+  font-size:36px;
+  fill:white;
+  transform:translateY(75%);
+}
+
+.fff-question-note{
+  width:98%;
+  height:15%;
+  left:1%;
+  top:70%;
+  background-color:black;
+  border:2px solid aqua;
+  font-size:36px;
+}
+
+#holder-2-host{
+  top:1920px;
+}
+
+#holder-2-host .main-q-gpx{
+  width:70%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+#holder-2-host .main-timer{
+  left:1%;
+  top:36%;
+}
+
+.next-cont-info{
+  width:50%;
+  height:10%;
+  left:8%;
+  top:36%;
+  background-color:black;
+  border:2px solid aqua;
+}
+
+.next-cont-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.next-cont-info svg text{
+  font-family:"Verdana";
+  font-size:48px;
+  fill:white;
+  transform:translateY(70%);
+}
+
+.correct-ans-info{
+  width:9%;
+  height:10%;
+  left:59%;
+  top:36%;
+  background-color:gray;
+}
+
+.correct-ans-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.correct-ans-info svg text{
+  font-family:"Verdana";
+  font-weight:bold;
+  font-size:48px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.question-winnings-info{
+  width:22%;
+  height:7%;
+  left:1%;
+  top:47%;
+  background-color:DarkGreen;
+}
+
+.question-winnings-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.question-winnings-info svg text{
+  font-family:"Verdana";
+  font-weight:bold;
+  font-size:48px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.lose-winnings-info{
+  width:21%;
+  height:7%;
+  left:24%;
+  top:47%;
+  background-color:DarkRed;
+}
+
+.lose-winnings-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.lose-winnings-info svg text{
+  font-family:"Verdana";
+  font-weight:bold;
+  font-size:48px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.top-winnings-info{
+  width:22%;
+  height:7%;
+  left:46%;
+  top:47%;
+  background-color:DarkGoldenRod;
+}
+
+.top-winnings-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.top-winnings-info svg text{
+  font-family:"Verdana";
+  font-weight:bold;
+  font-size:48px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.controller-message{
+  width:33%;
+  height:17.5%;
+  left:1%;
+  top:55%;
+  background-color:black;
+  border:2px solid aqua;
+  font-size:36px;
+}
+
+.other-info{
+  width:33%;
+  height:17.5%;
+  left:1%;
+  top:73.5%;
+  background-color:black;
+  border:2px solid aqua;
+  font-size:36px;
+}
+
+.main-question-note{
+  width:33%;
+  height:36%;
+  left:35%;
+  top:55%;
+  background-color:black;
+  border:2px solid aqua;
+  font-size:36px;
+}
+
+.now-cont-info{
+  width:67%;
+  height:7%;
+  left:1%;
+  top:92%;
+  background-color:black;
+  border:2px solid aqua;
+}
+
+.now-cont-info svg{
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+}
+
+.now-cont-info svg text{
+  font-family:"Verdana";
+  font-size:48px;
+  fill:white;
+  transform:translateY(70%);
+}

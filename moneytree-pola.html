@@ -1,0 +1,84 @@
+<head>
+  <title>Moneytree</title> 
+  
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
+	<script type="text/javascript" src="JS/accounting.min.js"></script>
+	<script type="text/javascript" src="JS/init.js"></script>
+  
+	<script type="module" src="JS/firebase.js"></script>
+  <script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/moneytree_fb.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_moneytree.css">
+	
+  <meta charset="utf-8" />
+</head>
+<!--
+<body onkeydown="if(!event.target.matches('input')&&!event.target.matches('textarea')&&event.keyCode != 122 && event.keyCode != 116 && event.keyCode != 17)return!1" oncontextmenu="return!1" onselectstart="return!1" ondragstart="return!1">
+!-->
+<body>
+
+  <div class="stage">
+    
+    <div class="holder" id="background">
+
+    </div>
+    
+    <div class="holder" id="mt-hold">
+      <div class="mt-container">
+        <div class="mt-bg">
+          <video class="mt-bg-vid" src="Assets/money tree background.mp4" autoplay loop muted></video>
+          <img class="seperator" src="Assets/tree_seperator.png" style="height:100%;right:37.5%;"/>
+        </div>
+
+        <div class="lifeline" id="ll-pass">
+          <img class="ll-icon" src="Assets/pass.png" style="width:100%;height:100%;" />
+          <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+        </div>
+
+        <div class="mt-cont-name">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="mt-q-left">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="mt-c-left">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="moneytree">
+
+          <div class="moneyTr" id="moneyTr-15">
+            <!--
+            <div class="moneyTd" id="moneyTd-t3">
+              <div class="moneyTd-prize">
+                <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                  <text lengthAdjust="spacingAndGlyphs" id="line_1">50 000 000 000 000 000 000 000 000 €</text>
+                </svg>
+              </div>
+            </div>
+            !-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.body.style.zoom = "100%";
+  </script>
+  
+</body>

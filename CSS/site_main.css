@@ -1,0 +1,687 @@
+body {
+  
+}
+
+.stage{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
+  z-index:0;
+}
+
+.holder{
+  width:1920px;
+  height:1080px;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+}
+
+#background{
+  background-image:none;
+  /*
+  background-image: url('https://cdn.glitch.global/1e0ed98c-8cea-492e-ab8c-1dec944f253e/Quem%20Quer%20Ser%20Milion%C3%A1rio%20-%20Alta%20Press%C3%A3o%20_%20Ep.%2010%20_%20RTP%206-23%20screenshot.png?v=1744819502185');
+  */
+  background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+  opacity:1;
+}
+
+/* q-Hold */
+
+#q-hold{
+  opacity:1;
+}
+
+.q-gpx{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.question{
+  width:100%;
+  height:12.25%;
+  bottom:24.5%;
+  left:0%;
+  opacity:1;
+  transform-origin: middle bottom;
+}
+
+.question svg{
+  left:13%;
+  width:74.25%;
+  height:85%;
+  top:5.25%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.answer{
+  width:50%;
+  height:7.5%;
+}
+
+.ans-letter{
+  left:0%;
+  width:100%;
+  height:100%;
+  top:0%;
+}
+
+.ans-text{
+  left:0%;
+  width:100%;
+  height:100%;
+  top:0%;
+}
+
+.ans-letter svg {
+  width:6%;
+  height:85%;
+  bottom:15%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+#ans-letter-a svg, #ans-letter-c svg{
+  left:25%;
+}
+
+#ans-letter-b svg, #ans-letter-d svg{
+  left:7%;
+}
+
+.ans-text svg {
+  width:63.5%;
+  height:85%;
+  bottom:12.5%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+#ans-text-a svg, #ans-text-c svg{
+  left:30.5%;
+}
+
+#ans-text-b svg, #ans-text-d svg{
+  left:12.5%;
+}
+
+#answer-a{
+  left:0%;
+  bottom:16.3%;
+}
+
+#answer-b{
+  right:0%;
+  bottom:16.3%;
+}
+
+#answer-c{
+  left:0%;
+  bottom:8.4%;
+}
+
+#answer-d{
+  right:0%;
+  bottom:8.4%;
+}
+
+.timer{
+  width:73.25%;
+  height:1.8%;
+  left:12.8%;
+  bottom:37.65%;
+  opacity:0;
+}
+
+#timer-blue{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  background-image:url("../Assets/Timer.png");
+  background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#timer-red{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  background-image:url("../Assets/Timer%20red.png");
+  background-repeat: no-repeat;
+	background-size: contain;
+  clip-path: inset(0 100% 0 0);
+}
+
+.sparkle{
+  background:url("../Assets/sparkle_sheet.png") no-repeat;
+  width:128px;
+  height:128px;
+  left:-4%;
+  bottom:-300%;
+  transform:scale(4);
+  -moz-opacity:0;
+	-webkit-opacity:1;
+	animation: moveSpritesheet 1s steps(25) infinite;
+  opacity:1;
+}
+
+@keyframes moveSpritesheet {
+	from {
+		background-position: 0px;
+	}
+	to {
+		background-position: -3200px;
+	}
+}
+
+
+.no-pass{
+  width:22.3%;
+  height:5.4%;
+  right:13.75%;
+  bottom:40.5%;
+}
+
+.no-pass svg{
+  left:10%;
+  width:80%;
+  height:100%;
+  top:0%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+/* m-Hold */
+
+#m-hold{
+  opacity:1;
+}
+
+.money{
+  width:44.3%;
+  height:11.5%;
+  bottom:14%;
+  left:27.6%;
+}
+
+.money svg{
+  width:82%;
+  height:100%;
+  top:0%;
+  left:9%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.total-money{
+  width:44.3%;
+  height:11.5%;
+  bottom:14%;
+  left:27.6%;
+}
+
+.total-money svg{
+  width:82%;
+  height:100%;
+  top:0%;
+  left:9%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.money-2{
+  width:44.3%;
+  height:17%;
+  bottom:14%;
+  left:27.6%;
+}
+
+.top-text{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.top-text svg{
+  width:78%;
+  left:11%;
+  height:100%;
+}
+
+.top-money, .old-top-money{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.top-money svg, .old-top-money svg{
+  width:82%;
+  height:58%;
+  left:9%;
+  top:37%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.comm-strap{
+  width:44.3%;
+  height:17%;
+  bottom:14%;
+  left:27.6%;
+}
+
+.cs-text{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.cs-text svg{
+  width:78%;
+  left:11%;
+  height:100%;
+}
+
+.cs-money{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.cs-money svg{
+  width:82%;
+  height:58%;
+  left:9%;
+  top:37%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+/* l-hold */
+
+#l-hold{
+  opacity:1;
+}
+
+.lifeline-holder{
+  width:86.8%;
+  height:16.5%;
+  left:6.6%;
+  bottom:7.6%;
+}
+
+.lh-icon{
+  width:12.1%;
+  height:73%;
+  top:13%;
+}
+
+#lh-icon-1{
+  left:35.3%;
+  background-image: url("../Assets/5050.png");
+  background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+#lh-icon-2{
+  left:56.3%;
+  background-image: url("../Assets/stq.png");
+  background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.lh-icon .ll-used{
+  opacity:0;
+}
+
+/* l-hold */
+
+#c-hold{
+  opacity:1;
+}
+
+.cont-strap{
+  width:100%;
+  height:10.7%;
+  bottom:10%;
+  left:0%;
+}
+
+.cont-name{
+  width:44%;
+  left:28%;
+  top:5%;
+  height:55%;
+}
+
+.cont-name svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.cont-name svg text{
+  font-family:"Verdana";
+  font-size:40px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(70%);
+}
+
+.cont-hometown{
+  width:44%;
+  left:28%;
+  top:45%;
+  height:48%;
+}
+
+.cont-hometown svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.cont-hometown svg text{
+  font-family:"Verdana";
+  font-size:38px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:#fff3ba;
+  transform:translateY(80%);
+}
+
+/* fa-hold */
+#fa-hold{
+  opacity:1;
+}
+
+.fa-container{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  opacity:1;
+}
+
+.fa-bg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fa-bg-vid{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  clip-path: inset(0 0% 0 59.75%);
+}
+
+.fa-q-text{
+  left:64%;
+  width:27%;
+  top:13%;
+  height:35%;
+}
+
+.fa-q-text svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fa-q-text svg text{
+  font-family:"Verdana";
+  font-size:44px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+}
+
+.fa-answer{
+  width:38.7%;
+  height:7.5%;
+  left:56.5%;
+}
+
+.fa-ans-diagonal{
+  top:39%;
+  left:5%;
+  width:2.8%;
+}
+
+.fa-ans-letter svg, .fa-ans-text svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fa-ans-letter{
+  width:7.5%;
+  height:80%;
+  top:10%;
+  left:9%;
+}
+
+.fa-ans-letter svg text{
+  fill:#fff3ba;
+  font-family:"Verdana";
+  font-size:47px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  transform:translateY(80%);
+}
+
+.fa-ans-text{
+  width:76%;
+  height:80%;
+  top:10%;
+  left:17%;
+}
+
+.fa-ans-text svg text{
+  fill:white;
+  font-family:"Verdana";
+  font-size:47px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  transform:translateY(80%);
+}
+
+#fa-answer-1{
+  top:55.5%;
+}
+
+#fa-answer-2{
+  top:65.7%;
+}
+
+#fa-answer-3{
+  top:75.9%;
+}
+
+#fa-answer-4{
+  top:86.1%;
+}
+
+/* fr-hold */
+#fr-hold{
+  opacity:1;
+}
+
+.fr-container{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+  opacity:1;
+}
+
+.fr-bg-vid{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fff-result{
+  width:100%;
+  left:0%;
+  height:7.2%;
+}
+
+.fr-name svg, .fr-times svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fr-name{
+  width:30%;
+  height:80%;
+  top:10%;
+  left:29.8%;
+}
+
+.fr-name svg text{
+  fill:white;
+  font-family:"Verdana";
+  font-size:45px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  transform:translateY(75%);
+}
+
+.fr-times{
+  width:10%;
+  height:80%;
+  top:10%;
+  left:60%;
+}
+
+.fr-times svg text{
+  fill:white;
+  font-family:"Verdana";
+  font-size:45px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  transform:translateY(75%);
+}
+
+#fff-result-1{
+  top:25.5%;
+}
+
+#fff-result-2{
+  top:34%;
+}
+
+#fff-result-3{
+  top:42.5%;
+}
+
+#fff-result-4{
+  top:51%;
+}
+
+#fff-result-5{
+  top:59.5%;
+}
+
+#fff-result-6{
+  top:68%;
+}
+
+/* fs-hold */
+#fs-hold{
+  opacity:1;
+}
+
+.fff-score{
+  width:41.1%;
+  height:5%;
+  right:0%;
+}
+
+.fs-name svg, .fs-score svg, .fs-times svg{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.fs-name{
+  width:50%;
+  height:80%;
+  top:10%;
+  left:3.5%;
+}
+
+.fs-name svg text{
+  fill:white;
+  font-family:"Verdana";
+  font-size:38px;
+  transform:translateY(78%);
+}
+
+.fs-score{
+  width:13.5%;
+  height:80%;
+  top:10%;
+  left:54%;
+}
+
+.fs-score svg text{
+  fill:white;
+  font-family:"Verdana";
+  font-size:38px;
+  transform:translateY(78%);
+}
+
+.fs-times{
+  width:14.5%;
+  height:80%;
+  top:10%;
+  left:68%;
+}
+
+.fs-times svg text{
+  fill:white;
+  font-family:"Arial";
+  font-size:38px;
+  transform:translateY(78%);
+}
+
+#fff-score-1{
+ top:58%; 
+}
+
+#fff-score-2{
+ top:63.6%; 
+}
+
+#fff-score-3{
+ top:69.2%; 
+}
+
+#fff-score-4{
+ top:74.8%; 
+}
+
+#fff-score-5{
+ top:80.4%; 
+}
+
+#fff-score-6{
+ top:86%; 
+}

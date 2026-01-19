@@ -1,0 +1,500 @@
+<head>
+  <title>Host</title> 
+  
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
+	<script type="text/javascript" src="JS/accounting.min.js"></script>
+	<script type="text/javascript" src="JS/init.js"></script>
+  
+	<script type="module" src="JS/firebase.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/sound_fb.js"></script>
+	<script type="module" src="JS/host_fb.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_player.css">
+	
+  <meta charset="utf-8" />
+</head>
+
+<body onkeydown="if(!event.target.matches('input')&&!event.target.matches('textarea')&&event.keyCode != 122 && event.keyCode != 116 && event.keyCode != 17)return!1" oncontextmenu="return!1" onselectstart="return!1" ondragstart="return!1">
+<!--
+<body>
+!-->
+  <div class="stage">
+    
+    <div class="holder" id="background">
+
+    </div>
+    
+    <div class="holder" id="holder-1-host">
+      <div class="fff-q-gpx">
+        <div class="question">
+          <img src="Assets/question%20monitor.png" style="width:100%;height:100%;" />
+          
+          <svg data-top="8" data-ypos="19" data-lines="2" data-scale="true" data-center="true">
+            <text text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" x="50%" y="37.5%" fill="white"></text>
+            <text text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_2" x="50%" y="85%" fill="white"></text>
+          </svg>
+        </div>
+        
+        <div class="answer" id="answer-a">
+          <img class="ans-main" src="Assets/answer%20a%20c%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20a%20c%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20a%20c%20correct%20monitor.png" style="width:100%;height:100%;" />
+          
+          <div class="ans-letter" id="ans-letter-a">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+          
+          <div class="ans-text" id="ans-text-a">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="answer" id="answer-b">
+          <img class="ans-main" src="Assets/answer%20b%20d%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20b%20d%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20b%20d%20correct%20monitor.png" style="width:100%;height:100%;" />
+          
+          <div class="ans-letter" id="ans-letter-b">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+          
+          <div class="ans-text" id="ans-text-b">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="answer" id="answer-c">
+          <img class="ans-main" src="Assets/answer%20a%20c%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20a%20c%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20a%20c%20correct%20monitor.png" style="width:100%;height:100%;" />
+          
+          <div class="ans-letter" id="ans-letter-c">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+          
+          <div class="ans-text" id="ans-text-c">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="answer" id="answer-d">
+          <img class="ans-main" src="Assets/answer%20b%20d%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20b%20d%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20b%20d%20correct%20monitor.png" style="width:100%;height:100%;" />
+          
+          <div class="ans-letter" id="ans-letter-d">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+          
+          <div class="ans-text" id="ans-text-d">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <table class="fff-results-table">
+        <tr class="frt-1">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+        <tr class="frt-2">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+        <tr class="frt-3">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+        <tr class="frt-4">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+        <tr class="frt-5">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+        <tr class="frt-6">
+          <td class="frt-name">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-answer">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-score">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+          <td class="frt-total-times">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </td>
+        </tr>
+      </table>
+      
+      <textarea class="fff-question-note" disabled></textarea>
+
+      <div class="fff-q-no-text">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" text-anchor="middle" x="50%" id="line_1"></text>
+        </svg>
+      </div>
+      <div class="fff-q-no-number">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" text-anchor="middle" x="50%" id="line_1"></text>
+        </svg>
+      </div>
+
+      <div class="fff-time-left-text">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" text-anchor="middle" x="50%" id="line_1"></text>
+        </svg>
+      </div>
+      <div class="fff-time-left-number">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text lengthAdjust="spacingAndGlyphs" text-anchor="middle" x="50%" id="line_1"></text>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="holder" id="holder-2-host">
+      <div class="main-q-gpx">
+        <div class="question">
+          <img src="Assets/question%20monitor.png" style="width:100%;height:100%;" />
+
+          <svg data-top="8" data-ypos="19" data-lines="2" data-scale="true" data-center="true">
+            <text text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" x="50%" y="37.5%" fill="white"></text>
+            <text text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_2" x="50%" y="85%" fill="white"></text>
+          </svg>
+        </div>
+
+        <div class="answer" id="answer-a">
+          <img class="ans-main" src="Assets/answer%20a%20c%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20a%20c%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20a%20c%20correct%20monitor.png" style="width:100%;height:100%;" />
+
+          <div class="ans-letter" id="ans-letter-a">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+
+          <div class="ans-text" id="ans-text-a">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="answer" id="answer-b">
+          <img class="ans-main" src="Assets/answer%20b%20d%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20b%20d%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20b%20d%20correct%20monitor.png" style="width:100%;height:100%;" />
+
+          <div class="ans-letter" id="ans-letter-b">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+
+          <div class="ans-text" id="ans-text-b">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="answer" id="answer-c">
+          <img class="ans-main" src="Assets/answer%20a%20c%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20a%20c%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20a%20c%20correct%20monitor.png" style="width:100%;height:100%;" />
+
+          <div class="ans-letter" id="ans-letter-c">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+
+          <div class="ans-text" id="ans-text-c">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="answer" id="answer-d">
+          <img class="ans-main" src="Assets/answer%20b%20d%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-final" src="Assets/answer%20b%20d%20final%20monitor.png" style="width:100%;height:100%;" />
+          <img class="ans-correct" src="Assets/answer%20b%20d%20correct%20monitor.png" style="width:100%;height:100%;" />
+
+          <div class="ans-letter" id="ans-letter-d">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+
+          <div class="ans-text" id="ans-text-d">
+            <svg data-top="7" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    
+      <div class="mt-container">
+        <div class="mt-bg">
+          
+        </div>
+
+        <div class="lifeline" id="ll-pass">
+          <img class="ll-icon" src="Assets/Monitor_Moneytree/pass_monitor.png" style="width:100%;height:100%;" />
+          <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+        </div> 
+
+        <div class="lifeline" id="ll-1">
+          <img class="ll-icon" src="Assets/Monitor_Moneytree/5050_monitor.png" style="width:100%;height:100%;" />
+          <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+        </div> 
+
+        <div class="lifeline" id="ll-2">
+          <img class="ll-icon" src="Assets/Monitor_Moneytree/stq_monitor.png" style="width:100%;height:100%;" />
+          <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
+        </div>
+
+        <div class="mt-cont-name">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="mt-q-left">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="mt-c-left">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+
+        <div class="moneytree">
+
+          <div class="moneyTr" id="moneyTr-15">
+            <!--
+            <div class="moneyTd" id="moneyTd-t3">
+              <div class="moneyTd-prize">
+                <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+                  <text lengthAdjust="spacingAndGlyphs" id="line_1">50 000 000 000 000 000 000 000 000 €</text>
+                </svg>
+              </div>
+            </div>
+            !-->
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="main-timer">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <div class="next-cont-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <div class="correct-ans-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <div class="question-winnings-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <div class="lose-winnings-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <div class="top-winnings-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+      
+      <textarea class="controller-message" placeholder="Tin nhắn từ Controller..." disabled></textarea>
+      <textarea class="other-info" disabled></textarea>
+      <textarea class="main-question-note" disabled></textarea>
+      
+      <div class="now-cont-info">
+        <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+          <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+        </svg>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    var number_of_player = 7;
+    document.body.style.zoom = "67%";
+    //document.body.style.zoom = "75%";
+  </script>
+  
+</body>
