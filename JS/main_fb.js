@@ -59,9 +59,11 @@ $(function () {
           {
             name: 'question-move-up',
             '0%': {
-              "transform": "translateY(400px) rotateX(-60deg) scale(1.3)"
+              "perspective": "4096",
+              "transform": "translateY(375px) rotateX(90deg) scale(1.5)"
             },
             '100%': {
+              "perspective": "4096",
               "transform": "translateY(200px) rotateX(0deg) scale(1)"
             }
           },
