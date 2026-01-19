@@ -645,14 +645,14 @@ $(function () {
             else {
               con.TextUpdateData(".fa-q-text", data.question_line_1 + data.question_line_2);
             }
-            con.TextUpdateData("#fa-ans-letter-a", data.correct_order_1.toUpperCase() + ":", 1);
-            con.TextUpdateData("#fa-ans-letter-b", data.correct_order_2.toUpperCase() + ":", 1);
-            con.TextUpdateData("#fa-ans-letter-c", data.correct_order_3.toUpperCase() + ":", 1);
-            con.TextUpdateData("#fa-ans-letter-d", data.correct_order_4.toUpperCase() + ":", 1);
-            con.TextUpdateData("#fa-ans-text-a", eval("data.answer_" + data.correct_order_1), 1);
-            con.TextUpdateData("#fa-ans-text-b", eval("data.answer_" + data.correct_order_2), 1);
-            con.TextUpdateData("#fa-ans-text-c", eval("data.answer_" + data.correct_order_3), 1);
-            con.TextUpdateData("#fa-ans-text-d", eval("data.answer_" + data.correct_order_4), 1);
+            con.TextUpdateData("#fa-ans-letter-1", data.correct_order_1.toUpperCase() + ":", 1);
+            con.TextUpdateData("#fa-ans-letter-2", data.correct_order_2.toUpperCase() + ":", 1);
+            con.TextUpdateData("#fa-ans-letter-3", data.correct_order_3.toUpperCase() + ":", 1);
+            con.TextUpdateData("#fa-ans-letter-4", data.correct_order_4.toUpperCase() + ":", 1);
+            con.TextUpdateData("#fa-ans-text-1", eval("data.answer_" + data.correct_order_1), 1);
+            con.TextUpdateData("#fa-ans-text-2", eval("data.answer_" + data.correct_order_2), 1);
+            con.TextUpdateData("#fa-ans-text-3", eval("data.answer_" + data.correct_order_3), 1);
+            con.TextUpdateData("#fa-ans-text-4", eval("data.answer_" + data.correct_order_4), 1);
           
             for (var i = 1; i <= 6; i++) {
               con.TextUpdateData("#fr-name-" + i, eval("data.cont_name_" + i), 1);
