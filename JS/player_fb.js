@@ -236,7 +236,7 @@ $(function () {
               con.TextUpdateData(".fff-input-answer", input_answer.toUpperCase(), 1);
             }
           
-            $(".holder").css("top", "1920px");
+            $(".holder").css("top", "5000px");
             $("#background").css("top", "0px");
             if(data.mode == 1) {
               if (number_of_player == 7) {
