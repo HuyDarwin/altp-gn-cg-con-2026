@@ -151,7 +151,11 @@ $(function () {
             }
           
             if(data.sfx_lights_down == 1) {
-              con.StopSound(2);
+              if (data.q_now != 6) {
+                setTimeout(function(){
+                  con.StopSound(1);
+                }, 500);
+              }
 
               if (data.q_now <= 5) {
                 con.PlaySound("Assets/mus_game_light_down_q_05.wav", 2);
@@ -297,18 +301,18 @@ $(function () {
               }
               
               if(data.q_top == data.q_now) {
-                con.PlaySound("Assets/q15_correct.mp3", 2);
+                con.PlaySound("Assets/q15_correct.mp3", 1);
               }
               else if(data.q_now == data.q_milestone){
-                con.PlaySound("Assets/mus_game_question_winstep_10.wav", 2);
+                con.PlaySound("Assets/mus_game_question_winstep_10.wav", 1);
               }
               else{
                 if (data.q_now <= 5) {
                   console.log(data.q_now);
-                  con.PlaySound("Assets/fastest_finger_reveal_times.mp3", 2);
+                  con.PlaySound("Assets/fastest_finger_reveal_times.mp3", 1);
                 }
                 else {
-                  con.PlaySound("Assets/q" + data.q_now + "_correct.mp3", 2);
+                  con.PlaySound("Assets/q" + data.q_now + "_correct.mp3", 1);
                 }
               }
               

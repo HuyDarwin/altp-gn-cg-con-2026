@@ -171,6 +171,28 @@ $(function () {
               "opacity": "1",
               "transform": "translateY(100px) rotateX(-90deg)"
             }
+          },
+          {
+            name: 'moving-in-from-right',
+            '0%': {
+              "opacity": "1",
+              "transform": "translateX(800px)"
+            },
+            '100%': {
+              "opacity": "1",
+              "transform": "translateX(0px)"
+            }
+          },
+          {
+            name: 'moving-out-to-right',
+            '0%': {
+              "opacity": "1",
+              "transform": "translateX(0px)"
+            },
+            '100%': {
+              "opacity": "1",
+              "transform": "translateX(800px)"
+            }
           }
         ]);
       
@@ -207,7 +229,9 @@ $(function () {
         }
       
         con.ResetQuestion = function(){
-          $(".ans-letter, .ans-text, .ans-diagonal, .ans-final, .ans-correct, .no-pass").css("opacity", 0);
+          $(".ans-letter, .ans-text, .ans-diagonal, .ans-final, .ans-correct").css("opacity", 0);
+          $(".now-money, .no-pass, #now-money-2").css("opacity", 0);
+          $("#now-money-1").css("opacity", 1);
           $(".ans-main").css("opacity", 1);
           $(".ans-letter svg text").attr("fill", "#fff3ba");
           $(".ans-text svg text").attr("fill", "white");
@@ -229,31 +253,31 @@ $(function () {
           $(".ans-letter, .ans-text, .ans-diagonal").css('opacity', 1);
           $(".question").playKeyframe({
             name: 'question-move-up-2',
-            duration: "0.3s",
-            timingFunction: 'linear'
+            duration: "0.75s",
+            timingFunction: 'ease'
           });
           setTimeout(function(){
-            $("#answer-a").playKeyframe({
+            $("#answer-c").playKeyframe({
               name: 'answer-move-from-left',
               duration: "0.75s",
               timingFunction: 'ease'
             });
             setTimeout(function(){
-              $("#answer-b").playKeyframe({
+              $("#answer-d").playKeyframe({
                 name: 'answer-move-from-right',
                 duration: "0.75s",
                 timingFunction: 'ease'
               });
             }, 100);
             setTimeout(function(){
-              $("#answer-c").playKeyframe({
+              $("#answer-a").playKeyframe({
                 name: 'answer-move-from-left',
                 duration: "0.75s",
                 timingFunction: 'ease'
               });
             }, 200);
             setTimeout(function(){
-              $("#answer-d").playKeyframe({
+              $("#answer-b").playKeyframe({
                 name: 'answer-move-from-right',
                 duration: "0.75s",
                 timingFunction: 'ease'
@@ -349,12 +373,20 @@ $(function () {
           $("#answer-" + answer + " .ans-text svg text").attr("fill", "#000000");
         }
       
-        con.RevealNoPass = function(){
-          $(".no-pass").animate({"opacity":"1"}, 250, "linear");
+        con.RevealNoPassNowMoney = function(){
+          $(".no-pass, .now-money").playKeyframe({
+            name: 'moving-in-from-right',
+            duration: "0.57s",
+            timingFunction: 'ease'
+          });
         }
       
-        con.HideNoPass = function(){
-          $(".no-pass").animate({"opacity":"0"}, 500, "linear");
+        con.HideNoPassNowMoney = function(){
+          $(".no-pass, .now-money").playKeyframe({
+            name: 'moving-out-to-right',
+            duration: "0.75s",
+            timingFunction: 'ease'
+          });
         }
       
         con.MoveDownQAndA = function() {
@@ -618,7 +650,6 @@ $(function () {
         con.TextUpdateData("#ans-letter-c", "C:", 1);
         con.TextUpdateData("#ans-letter-d", "D:", 1);
       
-        con.TextUpdateData(".no-pass", "Không thể chuyển", 1);
         con.TextUpdateData(".top-text", "MỐC TỐI ĐA MỚI", 1);
       
         //
@@ -661,6 +692,30 @@ $(function () {
               con.TextUpdateData("#fs-score-" + i, eval("data.fff_total_score_" + i), 1);
               con.TextUpdateData("#fs-times-" + i, eval("data.fff_total_times_" + i).toFixed(2), 1);
             }
+
+            if(data.lifeline_on_pass == false) {
+              con.TextUpdateData(".no-pass", "KHÔNG THỂ CHUYỂN", 1);
+            }
+            else {
+              con.TextUpdateData(".no-pass", "CÓ THỂ CHUYỂN", 1);
+            }
+
+            if(data.q_now == data.q_top) {
+              $("#now-money-1").css("opacity", 0);
+              $("#now-money-2").css("opacity", 1);
+            }
+            else {
+              $("#now-money-1").css("opacity", 1);
+              $("#now-money-2").css("opacity", 0);
+            }
+
+            if(eval("data.mt_value_" + data.q_now) != undefined){
+               con.TextUpdateData(".now-money", accounting.formatMoney(eval("data.mt_value_" + data.q_now)), 1);
+            }
+            else {
+              con.TextUpdateData(".now-money", "", 1);
+            }
+
           
             for (var i = 1; i <= 2; i++) {
               if(eval("data.lifeline_on_" + i) == false) {
@@ -792,13 +847,13 @@ $(function () {
               con.StopAndHideTimer();
               upd("stop_timer", 0);
             }
-            if(data.reveal_no_pass == 1) {
-              con.RevealNoPass();
-              upd("reveal_no_pass", 0);
+            if(data.reveal_no_pass_now_money == 1) {
+              con.RevealNoPassNowMoney();
+              upd("reveal_no_pass_now_money", 0);
             }
-            if(data.hide_no_pass == 1) {
-              con.HideNoPass();
-              upd("hide_no_pass", 0);
+            if(data.hide_no_pass_now_money == 1) {
+              con.HideNoPassNowMoney();
+              upd("hide_no_pass_now_money", 0);
             }
             if(data.temp_hide_main_question == 1) {
               con.MoveDownQAndA();

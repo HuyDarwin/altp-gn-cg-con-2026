@@ -81,10 +81,20 @@ $(function () {
               }
             }
             else if (now < i && i < top) {
-              htmlMTString += '<div class="moneyTd" id="moneyTd-t">';
+              if (milestone.includes(i)) {
+                htmlMTString += '<div class="moneyTd" id="moneyTd-tm">';
+              }
+              else {
+                htmlMTString += '<div class="moneyTd" id="moneyTd-t">';
+              }
             }
             else if(i == now) {
-              htmlMTString += '<div class="moneyTd" id="moneyTd-nt">';
+              if (milestone.includes(i)) {
+                htmlMTString += '<div class="moneyTd" id="moneyTd-ntm">';
+              }
+              else {
+                htmlMTString += '<div class="moneyTd" id="moneyTd-nt">';
+              }
             }
             
             htmlMTString += txt;

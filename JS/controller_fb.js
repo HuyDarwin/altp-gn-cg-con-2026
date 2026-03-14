@@ -198,6 +198,8 @@ $(function () {
         var is_switch_question_used = false;
       
         var stq_main_ques;
+
+        var has_just_used_switch = false;
       
         //
       
@@ -220,9 +222,7 @@ $(function () {
               timer--;
               upd("timer", timer);
               if(timer == 0 && is_revealing_main_question) {
-                if(lifeline_on_pass == false) {
-                  upd("hide_no_pass", 1);
-                }
+                upd("hide_no_pass_now_money", 1);
                 $("#h4s-main-3").html("Chạy đồng hồ");
                 timer_counter = 0;        
                 upd("sfx_stop_timer", 1);
@@ -782,11 +782,16 @@ $(function () {
           }
           else if(stq_counter == 2) {
             upd("hide_main_question", 1);
+
+            upd("hide_no_pass_now_money", 1);
+            
             is_revealing_main_question = false;
             upd("stop_q_bed", 1);
             
             stq_main_ques = main_questions[main_q_using - 1];
             main_questions[main_q_using - 1] = switch_questions[switch_q_using - 1];
+
+            has_just_used_switch = true;
             
             enb("#h4s-main-2");
             enb("#h4s-main-3");
@@ -1682,6 +1687,12 @@ $(function () {
             upd("answer_b_opacity", 0);
             upd("answer_c_opacity", 0);
             upd("answer_d_opacity", 0);
+
+            if (has_just_used_switch == true) {
+              stq_main_ques = main_questions[main_q_using - 1];
+              main_questions[main_q_using - 1] = switch_questions[switch_q_using - 1];
+              has_just_used_switch = false;
+            }
             
             SetupFFLifeline(1);
             SetupSTQLifeline(1);
@@ -1693,6 +1704,8 @@ $(function () {
             
             is_revealing_main_question = true;
             upd("reveal_main_question", 1);
+
+            upd("reveal_no_pass_now_money", 1);
             
             upd("sfx_q_bed", 1);
             
@@ -1741,9 +1754,6 @@ $(function () {
             PlayTimer(secs[q_now - 1]);
             upd("timer_secs", secs[q_now - 1]);
             upd("play_timer", 1);
-            if(lifeline_on_pass == false) {
-              upd("reveal_no_pass", 1);
-            }
             $(this).html("Dừng đồng hồ");
             timer_counter++;
             upd("sfx_timer", 1);
@@ -1751,9 +1761,6 @@ $(function () {
           else if(timer_counter == 1) {
             upd("stop_timer", 1);
             PauseTimer();
-            if(lifeline_on_pass == false) {
-              upd("hide_no_pass", 1);
-            }
             $(this).html("Chạy đồng hồ");
             timer_counter = 0;
             upd("sfx_stop_timer", 1);
@@ -1766,9 +1773,13 @@ $(function () {
             upd("sfx_pass", 1);
             upd("sfx_reveal_pass", 1);
             
-            lifeline_on_pass = false;
-            upd("lifeline_on_pass", lifeline_on_pass);
-            $(".llo-activate-pass").css("background-color", "red");
+            setTimeout(function(){
+              lifeline_on_pass = false;
+              upd("lifeline_on_pass", lifeline_on_pass);
+              $(".llo-activate-pass").css("background-color", "red");
+            }, 1000);
+
+            upd("hide_no_pass_now_money", 1);
             
             upd("stop_timer", 1);
             PauseTimer();
@@ -1817,6 +1828,9 @@ $(function () {
           }
           else if(pass_counter == 3) {
             upd("temp_reveal_main_question", 1);
+
+            upd("reveal_no_pass_now_money", 1);
+
             is_revealing_main_question = true;
             
             enb("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
@@ -1847,6 +1861,8 @@ $(function () {
             UpdateMainQuestionsData(2);
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
+
+            upd("hide_no_pass_now_money", 1);
           }
         });
         $("#h4s-main-6").click(function(){
@@ -1866,6 +1882,8 @@ $(function () {
             UpdateMainQuestionsData(2);
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
+
+            upd("hide_no_pass_now_money", 1);
           }
         });
         $("#h4s-main-7").click(function(){
@@ -1885,6 +1903,8 @@ $(function () {
             UpdateMainQuestionsData(2);
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
+
+            upd("hide_no_pass_now_money", 1);
           }
         });
         $("#h4s-main-8").click(function(){
@@ -1904,6 +1924,8 @@ $(function () {
             UpdateMainQuestionsData(2);
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
+
+            upd("hide_no_pass_now_money", 1);
           }
         });
         $("#h4s-main-9").click(function(){
@@ -1917,6 +1939,8 @@ $(function () {
           UpdateMainQuestionsData(1);
           enb("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
           dib("#h4s-main-9, #h4s-main-10");
+
+          upd("reveal_no_pass_now_money", 1);
         });
       
         var correct_answer_counter = 0;
@@ -2057,6 +2081,7 @@ $(function () {
           if (is_revealing_main_question) {
             if (commercial_counter == 0) {
               upd("temp_hide_main_question", 1);
+              upd("hide_no_pass_now_money", 1);
               upd("stop_music_for_comm", 1);
               $(this).html("Vào QC");
               commercial_counter++;
@@ -2085,6 +2110,7 @@ $(function () {
             }
             else if (commercial_counter == 5) {
               upd("temp_reveal_main_question", 1);
+              upd("reveal_no_pass_now_money", 1);
               //upd("play_music_after_comm", 1);
               if(q_now <= 5 || final_ans == "") {
                 upd("sfx_q_bed", 1);

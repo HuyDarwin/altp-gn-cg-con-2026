@@ -1,5 +1,5 @@
 body {
-  
+    
 }
 
 @keyframes zoomInOut {
@@ -234,6 +234,23 @@ body {
   transform:translate(2%, 75%);
 }
 
+#moneyTd-tm{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-tm svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translate(2%, 75%);
+}
+
 #moneyTd-nlp{
   background-image: url("../Assets/lq.png");
   background-repeat: no-repeat;
@@ -269,6 +286,24 @@ body {
   font-size:48px;
   text-shadow: 3px 2px 2px rgba(0,0,0,1);
   fill:#dcd5d6;
+  transform:translate(2%, 75%);
+  animation: zoomInOut 1s linear infinite;
+}
+
+#moneyTd-ntm{
+	z-index:1;
+  width:97.5%;
+  height:6%;
+  top:0%;
+  left:2.5%;
+  position:relative;
+}
+
+#moneyTd-ntm svg text {
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  fill:white;
   transform:translate(2%, 75%);
   animation: zoomInOut 1s linear infinite;
 }

@@ -25,8 +25,9 @@ body {
 #background{
   background-image:none;
   /*
-  background-image: url('https://cdn.glitch.global/1e0ed98c-8cea-492e-ab8c-1dec944f253e/Quem%20Quer%20Ser%20Milion%C3%A1rio%20-%20Alta%20Press%C3%A3o%20_%20Ep.%2010%20_%20RTP%206-23%20screenshot.png?v=1744819502185');
+  background-image: url('../Assets/Millionaire Hot Seat _ 9 January 2026 _ 19_30 _ ITV 1 HD 27-51 screenshot.png');
   */
+
   background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -183,20 +184,50 @@ body {
 	}
 }
 
+.now-money{
+  width:27.5%;
+  height:5.4%;
+  right:0%;
+  top:10%;
+}
+
+.now-money svg{
+  left:6%;
+  width:53%;
+  height:100%;
+  top:0%;
+}
+
+.now-money svg text{
+  font-family:"Copperplate";
+  font-size:48px;
+  text-shadow: 2px 3px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(67.5%);
+  letter-spacing: -3px;
+}
 
 .no-pass{
-  width:22.3%;
+  width:27.5%;
   height:5.4%;
-  right:13.75%;
-  bottom:40.5%;
+  right:0%;
+  top:15.6%;
 }
 
 .no-pass svg{
-  left:10%;
-  width:80%;
+  left:6%;
+  width:53%;
   height:100%;
   top:0%;
+}
+
+.no-pass svg text{
+  font-family:"Verdana";
+  font-weight: bold;
+  font-size:28px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform:translateY(65%);
 }
 
 /* m-Hold */
@@ -479,9 +510,9 @@ body {
 .fa-ans-letter svg text{
   fill:#fff3ba;
   font-family:"Verdana";
-  font-size:47px;
+  font-size:43px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
-  transform:translateY(80%);
+  transform:translateY(75%);
 }
 
 .fa-ans-text{
@@ -494,9 +525,9 @@ body {
 .fa-ans-text svg text{
   fill:white;
   font-family:"Verdana";
-  font-size:47px;
+  font-size:44.5px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
-  transform:translateY(80%);
+  transform:translateY(75%);
 }
 
 #fa-answer-1{
