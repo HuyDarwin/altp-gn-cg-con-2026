@@ -200,6 +200,7 @@ $(function () {
         var stq_main_ques;
 
         var has_just_used_switch = false;
+        var auto_pass_if_times_up = false;
       
         //
       
@@ -226,16 +227,21 @@ $(function () {
                 $("#h4s-main-3").html("Chạy đồng hồ");
                 timer_counter = 0;        
                 upd("sfx_stop_timer", 1);
-                
-                final_ans = "";
-                upd("final_ans", final_ans);
-                correct_ans = main_questions[main_q_using - 1].CorrectAns;
-                UpdateMainQuestionsData(2);
-                enb("#h4s-main-10");
-                
-                setTimeout(function(){
-                  upd("stop_q_bed", 1);
-                }, 500);
+
+                if (lifeline_on_pass == true && auto_pass_if_times_up == true) {
+                  $("#h4s-main-4").click();
+                }
+                else {
+                  final_ans = "";
+                  upd("final_ans", final_ans);
+                  correct_ans = main_questions[main_q_using - 1].CorrectAns;
+                  UpdateMainQuestionsData(2);
+                  enb("#h4s-main-10");
+                  
+                  setTimeout(function(){
+                    upd("stop_q_bed", 1);
+                  }, 500);
+                }                
               }
             }
           }, 1000);
@@ -2280,6 +2286,17 @@ $(function () {
           }
         });
       
+        $("#h4s-main-26").click(function(){
+          auto_pass_if_times_up = !auto_pass_if_times_up;
+          
+          if (auto_pass_if_times_up){
+            $(this).css("background-color", "green");
+          }
+          else{
+            $(this).css("background-color", "black");
+          }
+        });
+      
         $(".ap-button").click(function(){
           var idname = "#" + $(this).attr("id");
           var id = parseInt($(idname).html());
@@ -2449,6 +2466,7 @@ $(function () {
       
         $("#h4s-fff-6").click();
         $("#h4s-fff-7").click();
+        $("#h4s-main-26").click();
         $(".auto-set-follower").click();
       
         //RenderMTFT();

@@ -308,7 +308,6 @@ $(function () {
               }
               else{
                 if (data.q_now <= 5) {
-                  console.log(data.q_now);
                   con.PlaySound("Assets/fastest_finger_reveal_times.mp3", 1);
                 }
                 else {
