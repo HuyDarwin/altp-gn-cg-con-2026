@@ -706,7 +706,7 @@ $(function () {
           }
           else {
             if(data.lifeline_on_pass == false) {
-              con.TextUpdateData(".ll-pass-lozenge", "KHÔNG THỂ CHUYỂN ĐÂU", 1);
+              con.TextUpdateData(".ll-pass-lozenge", "KHÔNG THỂ CHUYỂN", 1);
             }
             else {
               con.TextUpdateData(".ll-pass-lozenge", "CÓ THỂ CHUYỂN", 1);
