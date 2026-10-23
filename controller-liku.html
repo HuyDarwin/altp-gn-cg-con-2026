@@ -3,6 +3,7 @@
   
 	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.3d.js"></script>
 	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
 	<script type="text/javascript" src="JS/accounting.min.js"></script>
 	<script type="text/javascript" src="JS/init.js"></script>
@@ -32,14 +33,21 @@
       
       <iframe src="main-trup.html" class="screen-iframe" id="i-main" style="background-color:gray;"></iframe>
       <iframe src="moneytree-pola.html" class="screen-iframe" id="i-moneytree" style="background-color:gray;" muted></iframe>
+      <iframe src="vidwall-roli.html" class="screen-iframe" id="i-vidwall" style="background-color:gray;" muted></iframe>
       
     </div>
     
     <div class="holder" id="holder-2">
+
+      <button class="to-main">Main</button>
+      <button class="to-moneytree">Moneytree</button>
+      <button class="to-vidwall">Video Wall</button>
       
+      <!--
       <p class="holder-title">
         
       </p>
+      -->
       
       <input type="file" accept=".xls,.xlsx,.ods" class="get-c-info" />
       <input type="file" accept=".xls,.xlsx,.ods" class="get-mt-info" />
@@ -91,17 +99,17 @@
       </p>
       
       <div class="rel">
-        <button class="reload">
-          Reload
+        <button class="reload-main-mt">
+          Reload Main + MT
         </button>    
-        
-        <button class="to-main">
-          Xem Main
-        </button>     
-        
-        <button class="to-moneytree">
-          Xem Moneytree
-        </button>   
+
+        <button class="reload-player">
+          Reload Player + Host
+        </button>    
+
+        <button class="reload-vidwall">
+          Reload Vidwall
+        </button>    
         
         <button class="edit-passkey">
           Thay đổi mật khẩu
@@ -110,6 +118,10 @@
         <button class="reload-auth">
           Reload Auth
         </button>   
+
+        <button class="reload">
+          Reload All
+        </button>    
       </div>
       
     </div>  
@@ -121,12 +133,34 @@
       </p> 
       
       <div class="rel">
+        <button class="select-mode" id="sm-home">
+          Home
+        </button>
         <button class="select-mode" id="sm-fff">
           BBPN sắp xếp
         </button>
         <button class="select-mode" id="sm-main">
           Chính
         </button>
+      </div>
+      
+      <div class="h4-system" id="h4s-home" style="width:100%;height:100%;top:1920px;left:0%;">
+        <p class="vidwall-title">Thao tác với Video Wall</p>        
+
+        <button class="vidwall-zoom-out">Zoom Out Logo</button>
+        <button class="vidwall-he" disabled>Host Entrance</button>
+
+        <p class="vidwall-note">
+          <em>Lưu ý: Tính năng Video Wall vẫn còn đang sơ khai.</em>
+          <br/>
+          <u><strong style="font-family: Arial;">Trình tự bấm Video Wall đầu chương trình:</strong></u>
+          <br/>
+          <strong>Intro (ở mục Âm nhạc) -> Zoom Out Logo -> Host Entrance.</strong>
+          <br/>
+          Nếu phải quay lại phần Host Entrance thì
+          <br/>
+          bấm lại Zoom Out Logo trước rồi Host Entrance sau.
+        </p>        
       </div>
       
       <div class="h4-system" id="h4s-fff" style="width:100%;height:100%;top:1920px;left:0%;">
@@ -557,6 +591,14 @@
         
       <button class="auto-set-follower">Tự động chuyển Follower</button>
       
+      <button class="explain-the-rules">GT luật chơi</button>
+      
+      <button class="etr-step1" disabled>1</button>
+      <button class="etr-step2" disabled>2</button>
+      <button class="etr-step3" disabled>3</button>
+      <button class="etr-step4" disabled>4</button>
+      <button class="etr-step5" disabled>5</button>
+      <button class="etr-end" disabled>End</button>
     </div>
     
     <div class="holder" id="holder-8">

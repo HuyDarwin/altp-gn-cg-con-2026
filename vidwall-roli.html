@@ -1,0 +1,111 @@
+<head>
+  <title>Video Wall</title> 
+  
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.3d.js"></script>
+	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
+	<script type="text/javascript" src="JS/accounting.min.js"></script>
+	<script type="text/javascript" src="JS/init.js"></script>
+  
+	<script type="module" src="JS/firebase.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/vidwall_fb.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_vidwall.css">
+	
+  <meta charset="utf-8" />
+</head>
+<!--
+<body onkeydown="if(!event.target.matches('input')&&!event.target.matches('textarea')&&event.keyCode != 122 && event.keyCode != 116 && event.keyCode != 17)return!1" oncontextmenu="return!1" onselectstart="return!1" ondragstart="return!1">
+!-->
+<body>
+
+  <div class="stage">
+    
+    <div class="holder" id="background">
+    </div>
+    
+    <div class="holder" id="bg-hold">
+      <div class="bg-intro">
+        <video src="Assets/Video wall/bg intro.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>
+      <div class="bg2">
+        <video src="Assets/Video wall/bg2.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>  
+      <div class="bg-ques">
+        <video src="Assets/Video wall/bg ques.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>  
+      <div class="bg-pass">
+        <video src="Assets/Video wall/bg pass.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>  
+      <div class="bg-dark-red">
+        <video src="Assets/Video wall/610950315_32999134149730743_4317372723569308609_n.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>  
+      <div class="bg-pass-dark">
+        <video src="Assets/Video wall/bg pass dark.mp4" autoplay loop muted style="width:100%;height:100%;left:0%;top:0%;"></video>
+      </div>
+    </div>    
+    
+    <div class="holder" id="logo-hold">
+      <!--
+      <img src="Assets/Hot seat video wall.png" style="width:100%;height:100%;left:0%;right:0%;" />
+      -->
+      <div class="logo-block-red">
+        <span id="main">
+          <img class="logo-red-inner" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120217.png" />
+          <img class="logo-red-ring" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120222.png" />
+          <img class="logo-red-atom" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120225.png" />
+          <img class="logo-red-ques-mark" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120227.png" />
+          <img class="logo-red-outer-ring" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120219.png" />
+          <img class="logo-red-diagonal" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120221.png" />
+
+          <img class="logo-red-text-above" src="Assets/Video wall/main logo/Untitled334_20260109003101.png" />
+          <img class="logo-red-text-below" src="Assets/Video wall/main logo/Untitled334_20260109003149.png" />
+          <img class="logo-red-text-lozenge" src="Assets/Video wall/main logo/Hot_Seat_UK_Intro_2026_20260110120228.png" />
+          <img class="logo-red-text-center" src="Assets/Video wall/main logo/Untitled334_20260109003103.png" />
+
+          <div class="logo-fff-text"></div>
+
+          <div class="logo-gpx-prize">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+        </span>
+      </div>
+
+      <div class="logo-block-blue">
+        <span id="main">
+          <img class="logo-blue-inner" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142455.png" />
+          <img class="logo-blue-ring" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142500.png" />
+          <img class="logo-blue-atom" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142508.png" />
+          <img class="logo-blue-ques-mark" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142510.png" />
+          <img class="logo-blue-outer-ring" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142456.png" />
+          <img class="logo-blue-diagonal" src="Assets/Video wall/blue logo/Hot_Seat_UK_VW_20260130142458.png" />
+        </span>
+      </div>
+
+      <div class="logo-pass">
+        <div class="logo-pass-glow"></div>
+        <div class="logo-pass-lozenge"></div>
+      </div>
+
+      <div class="logo-total-prize">
+        <div class="logo-total-prize-atom"></div>
+        <div class="logo-total-prize-lozenge">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1">50.000 CG</text>
+          </svg>
+        </div>
+      </div>
+    </div>   
+  </div>
+  
+  <script>
+    document.body.style.zoom = "100%";
+  </script>
+  
+</body>

@@ -3,6 +3,7 @@
   
 	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.3d.js"></script>
 	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
 	<script type="text/javascript" src="JS/accounting.min.js"></script>
 	<script type="text/javascript" src="JS/init.js"></script>
@@ -30,32 +31,45 @@
     <div class="holder" id="mt-hold">
       <div class="mt-container">
         <div class="mt-bg">
-          <video class="mt-bg-vid" src="Assets/money tree background.mp4" autoplay loop muted></video>
-          <img class="seperator" src="Assets/tree_seperator.png" style="height:100%;right:37.5%;"/>
+          <video class="mt-bg-vid" src="Assets/money tree background darker.mp4" autoplay loop muted></video>
+          <div class="separator-wrap">
+              <img class="seperator" src="Assets/tree_seperator.png">
+          </div>
         </div>
 
+        <!--
         <div class="lifeline" id="ll-pass">
           <img class="ll-icon" src="Assets/pass.png" style="width:100%;height:100%;" />
           <img class="ll-used" src="Assets/lifeline%20used.png" style="height:100%;" />
         </div>
+        -->
 
         <div class="mt-cont-name">
           <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
           </svg>
         </div>
 
         <div class="mt-q-left">
           <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
           </svg>
         </div>
 
-        <div class="mt-c-left">
+        <div class="ll-pass-lozenge">
+          <img class="ll-pass-lozenge-img" src="Assets/Can't Pass.png" />
           <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
           </svg>
         </div>
+
+        <!--
+        <div class="mt-c-left">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+          </svg>
+        </div>
+        -->
 
         <div class="moneytree">
 

@@ -3,6 +3,7 @@
   
 	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="JS/jquery.3d.js"></script>
 	<script type="text/javascript" src="JS/jquery.keyframes.min.js"></script>
 	<script type="text/javascript" src="JS/accounting.min.js"></script>
 	<script type="text/javascript" src="JS/init.js"></script>
@@ -41,6 +42,8 @@
         </div>
         
         <div class="answer" id="answer-a">
+          <img class="ans-line" src="Assets/answer_a_line.png" style="width:100%;height:100%;" />
+
           <img class="ans-main" src="Assets/answer_a.png" style="width:100%;height:100%;" />
           <img class="ans-final" src="Assets/answer_a_final.png" style="width:100%;height:100%;" />
           <img class="ans-correct" src="Assets/answer_a_correct.png" style="width:100%;height:100%;" />
@@ -61,6 +64,8 @@
         </div>
         
         <div class="answer" id="answer-b">
+          <img class="ans-line" src="Assets/answer_b_line.png" style="width:100%;height:100%;" />
+
           <img class="ans-main" src="Assets/answer_b.png" style="width:100%;height:100%;" />
           <img class="ans-final" src="Assets/answer_b_final.png" style="width:100%;height:100%;" />
           <img class="ans-correct" src="Assets/answer_b_correct.png" style="width:100%;height:100%;" />
@@ -81,6 +86,8 @@
         </div>
         
         <div class="answer" id="answer-c">
+          <img class="ans-line" src="Assets/answer_c_line.png" style="width:100%;height:100%;" />
+
           <img class="ans-main" src="Assets/answer_c.png" style="width:100%;height:100%;" />
           <img class="ans-final" src="Assets/answer_c_final.png" style="width:100%;height:100%;" />
           <img class="ans-correct" src="Assets/answer_c_correct.png" style="width:100%;height:100%;" />
@@ -101,6 +108,8 @@
         </div>
         
         <div class="answer" id="answer-d">
+          <img class="ans-line" src="Assets/answer_d_line.png" style="width:100%;height:100%;" />
+
           <img class="ans-main" src="Assets/answer_d.png" style="width:100%;height:100%;" />
           <img class="ans-final" src="Assets/answer_d_final.png" style="width:100%;height:100%;" />
           <img class="ans-correct" src="Assets/answer_d_correct.png" style="width:100%;height:100%;" />
@@ -119,22 +128,22 @@
             </svg>
           </div>
         </div>
-        
-        <div class="now-money">
-          <img src="Assets/Right Lozenge 1.png" id="now-money-1" style="width:100%;" />
-          <img src="Assets/Right Lozenge 2.png" id="now-money-2" style="width:100%;" />
-          
-          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
-          </svg>
-        </div>
-        
-        <div class="no-pass">
-          <img src="Assets/Right Lozenge 1.png" style="width:100%;" />
-          
-          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
-          </svg>
+
+        <div class="money-and-pass">
+          <img src="Assets/Double Right Lozenge 1.png" id="map-lozenge-1" style="width:100%;" />
+          <img src="Assets/Double Right Lozenge 2.png" id="map-lozenge-2" style="width:100%;" />
+
+          <div class="now-money">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
+
+          <div class="now-pass">
+            <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+              <text x="50%" text-anchor="middle" y="50%" dominant-baseline="middle" lengthAdjust="spacingAndGlyphs" id="line_1"></text>
+            </svg>
+          </div>
         </div>
         
         <div class="timer">
@@ -171,11 +180,11 @@
       </div>
       
       <div class="money-2">
-        <img src="Assets/Money%20Strap%20with%20White%20Lozenge.png" style="width:100%;height:100%;" />
+        <img src="Assets/Golden%20Strap%20with%20Lozenge.png" style="width:100%;height:100%;" />
         
         <div class="top-text">
           <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Verdana" font-size="38px" font-weight="bold" y="22.5%" fill="#41021c"></text>
+            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Verdana" font-size="38px" font-weight="bold" y="22.5%" fill="white"></text>
           </svg>
         </div>
         
@@ -193,15 +202,31 @@
       </div>
       
       <div class="comm-strap">
-        <img src="Assets/Money%20Strap%20with%20White%20Lozenge.png" style="width:100%;height:100%;" />
+        <img src="Assets/Golden%20Strap%20with%20Lozenge.png" style="width:100%;height:100%;" />
         
         <div class="cs-text">
           <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
-            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Verdana" font-size="38px" font-weight="bold" y="22.5%" fill="#41021c"></text>
+            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Verdana" font-size="38px" font-weight="bold" y="22.5%" fill="white"></text>
           </svg>
         </div>
         
         <div class="cs-money">
+          <svg data-top="37" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Copperplate" font-size="120px" y="80%" fill="white"></text>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="final-strap">
+        <img src="Assets/Golden%20Strap%20with%20Lozenge.png" style="width:100%;height:100%;" />
+        
+        <div class="fq-text">
+          <svg data-top="0" data-ypos="0" data-lines="1" data-scale="true"> 
+            <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Verdana" font-size="38px" font-weight="bold" y="22.5%" fill="white"></text>
+          </svg>
+        </div>
+        
+        <div class="fq-money">
           <svg data-top="37" data-ypos="0" data-lines="1" data-scale="true"> 
             <text x="50%" text-anchor="middle" lengthAdjust="spacingAndGlyphs" id="line_1" font-family="Copperplate" font-size="120px" y="80%" fill="white"></text>
           </svg>
@@ -244,7 +269,9 @@
       <div class="fa-container">
         <div class="fa-bg">
           <video class="fa-bg-vid" src="Assets/money tree background.mp4" autoplay loop muted></video>
-          <img class="seperator" src="Assets/tree_seperator.png" style="height:100%;left:59.4%;"/>
+          <div class="separator-wrap">
+            <img class="seperator" src="Assets/tree_seperator.png">
+          </div>
         </div>
         
         <div class="fa-q-text">
