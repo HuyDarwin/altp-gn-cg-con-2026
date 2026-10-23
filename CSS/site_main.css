@@ -184,16 +184,23 @@ body {
 	}
 }
 
-.now-money{
-  width:27.5%;
+.money-and-pass {
+  width:49.75%;
   height:5.4%;
   right:0%;
-  top:10%;
+  bottom:40.5%;
+}
+
+.now-money{
+  width:35.85%;
+  height:100%;
+  left:0%;
+  top:0%;
 }
 
 .now-money svg{
   left:6%;
-  width:53%;
+  width:88%;
   height:100%;
   top:0%;
 }
@@ -203,31 +210,29 @@ body {
   font-size:48px;
   text-shadow: 2px 3px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translateY(67.5%);
   letter-spacing: -3px;
 }
 
-.no-pass{
-  width:27.5%;
-  height:5.4%;
-  right:0%;
-  top:15.6%;
+.now-pass{
+  width:35.85%;
+  height:100%;
+  left:35.85%;
+  top:0%;
 }
 
-.no-pass svg{
+.now-pass svg{
   left:6%;
-  width:53%;
+  width:88%;
   height:100%;
   top:0%;
 }
 
-.no-pass svg text{
-  font-family:"Verdana";
+.now-pass svg text{
+  font-family:"Copperplate-Viethoa";
   font-weight: bold;
-  font-size:28px;
+  font-size:32px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translateY(65%);
 }
 
 /* m-Hold */
@@ -329,6 +334,41 @@ body {
 }
 
 .cs-money svg{
+  width:82%;
+  height:58%;
+  left:9%;
+  top:37%;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+}
+
+.final-strap{
+  width:44.3%;
+  height:17%;
+  bottom:14%;
+  left:27.6%;
+}
+
+.fq-text{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.fq-text svg{
+  width:78%;
+  left:11%;
+  height:100%;
+}
+
+.fq-money{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+}
+
+.fq-money svg{
   width:82%;
   height:58%;
   left:9%;
@@ -458,6 +498,56 @@ body {
   top:0%;
   left:0%;
   clip-path: inset(0 0% 0 59.75%);
+}
+
+.separator-wrap {
+    position: absolute;
+    height: 100%;
+    left: 59.4%;
+    width: auto;
+}
+
+.seperator {
+    height: 100%;
+    display: block;
+}
+
+.separator-wrap::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -20%;
+    width: calc(100% + 10px);
+    height: 20%;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 220, 0, 0.2) 20%,
+        rgba(255, 255, 120, 1) 50%,
+        rgba(255, 220, 0, 0.2) 80%,
+        transparent 100%
+    );
+
+    filter: blur(3px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+
+    animation: separatorSweep 5s linear infinite;
+}
+
+@keyframes separatorSweep {
+    0% {
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(1350%);
+    }
+
+    100% {
+        transform: translateY(1350%);
+    }
 }
 
 .fa-q-text{

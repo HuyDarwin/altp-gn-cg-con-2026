@@ -69,11 +69,13 @@ textarea{
   height:45px;
   
   font-family:"Tahoma";
-  font-size:32px;
+  font-size:28px;
+  font-weight: bold;
   line-height:45px;
   text-align:center;
   
   background-color:white;
+  border-inline: 2px solid black;
 }
 
 .popup{
@@ -155,6 +157,30 @@ textarea{
   height:540px;
 }
 
+.to-main{
+  left: 5px;
+  top: 5px;
+  width: 186px;
+  height: 32px;
+  font-size: 18px;
+}
+
+.to-moneytree{
+  left: 197px;
+  top: 5px;
+  width: 186px;
+  height: 32px;
+  font-size: 18px;
+}
+
+.to-vidwall{
+  left: 389px;
+  top: 5px;
+  width: 186px;
+  height: 32px;
+  font-size: 18px;
+}
+
 .get-c-info, .get-mt-info, .get-q-info, .get-sq-info{
   top:1920px;
 }
@@ -162,33 +188,33 @@ textarea{
 .load-c-info{
   top:50px;
   left:5px;
-  width:130px;
+  width:137px;
   height:50px;
-  font-size:24px;
+  font-size:22px;
 }
 
 .load-mt-info{
   top:50px;
-  left:140px;
-  width:130px;
+  left:149.5px;
+  width:137px;
   height:50px;
-  font-size:24px;
+  font-size:22px;
 }
 
 .load-q-info{
   top:50px;
-  left:275px;
-  width:120px;
+  left:292px;
+  width:137px;
   height:50px;
-  font-size:24px;
+  font-size:22px;
 }
 
 .load-sq-info{
   top:50px;
-  left:400px;
-  width:150px;
+  left:434.5px;
+  width:141px;
   height:50px;
-  font-size:24px;
+  font-size:22px;
 }
 
 .question{
@@ -410,6 +436,47 @@ textarea{
   height:435px;
 }
 
+.vidwall-title {
+	font-family:"Tahoma";
+	font-size:24px;
+  font-weight: bold;
+  left:5px;
+  height:35px;
+  line-height:35px;
+  top:0px;
+  width:300px;
+  color:white;
+}
+
+.vidwall-zoom-out {
+  left:5px;
+  top:45px;
+  width:250px;
+  height:35px;
+	font-size:28px;
+  line-height:35px;
+}
+
+.vidwall-he {
+  left:260px;
+  top:45px;
+  width:200px;
+  height:35px;
+	font-size:28px;
+  line-height:35px;
+}
+
+.vidwall-note {
+	font-family:"Tahoma";
+	font-size:24px;
+  left:5px;
+  height:175px;
+  top:85px;
+  width:800px;
+  color:white;
+  line-height: 35px;
+}
+ 
 .list-fff-qs{
   top:0px;
   left:5px;
@@ -1344,7 +1411,7 @@ textarea{
 }
 
 .q-now-toggle {
-  width:200px;
+  width:150px;
   height:40px;
   left:5px;
   top:640px;
@@ -1354,7 +1421,7 @@ textarea{
   top:0%;
   height:100%;
   left:0%;
-  width:65%;
+  width:55%;
 }
 
 .q-now-toggle svg text{
@@ -1367,21 +1434,21 @@ textarea{
 .q-now-up {
   top:0%;
   height:100%;
-  left:70%;
-  width:12.5%;
+  left:60%;
+  width:17.5%;
 }
 
 .q-now-down {
   top:0%;
   height:100%;
-  left:85%;
-  width:12.5%;
+  left:80%;
+  width:17.5%;
 }
 
 .q-top-toggle {
-  width:200px;
+  width:150px;
   height:40px;
-  left:210px;
+  left:160px;
   top:640px;
 }
 
@@ -1389,7 +1456,7 @@ textarea{
   top:0%;
   height:100%;
   left:0%;
-  width:65%;
+  width:55%;
 }
 
 .q-top-toggle svg text{
@@ -1402,15 +1469,15 @@ textarea{
 .q-top-up {
   top:0%;
   height:100%;
-  left:70%;
-  width:12.5%;
+  left:60%;
+  width:17.5%;
 }
 
 .q-top-down {
   top:0%;
   height:100%;
-  left:85%;
-  width:12.5%;
+  left:80%;
+  width:17.5%;
 }
 
 .auto-set-follower{
@@ -1418,6 +1485,62 @@ textarea{
   width:200px;
   top:690px;
   font-size:16px;
+}
+
+.explain-the-rules {
+  width:140px;
+  height:40px;
+  left:315px;
+  top:640px;
+  font-size: 20px;
+}
+
+.etr-step1 {
+  width:50px;
+  height:40px;
+  left:5px;
+  top:99640px;
+  font-size: 20px;
+}
+
+.etr-step2 {
+  width:50px;
+  height:40px;
+  left:65px;
+  top:99640px;
+  font-size: 20px;
+}
+
+.etr-step3 {
+  width:50px;
+  height:40px;
+  left:120px;
+  top:99640px;
+  font-size: 20px;
+}
+
+.etr-step4 {
+  width:50px;
+  height:40px;
+  left:175px;
+  top:99640px;
+  font-size: 20px;
+}
+
+.etr-step5 {
+  width:50px;
+  height:40px;
+  left:230px;
+  top:99640px;
+  font-size: 20px;
+}
+
+.etr-end {
+  width:100px;
+  height:40px;
+  left:285px;
+  top:99640px;
+  font-size: 20px;
 }
 
 /* Holder-8 */

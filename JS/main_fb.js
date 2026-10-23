@@ -113,6 +113,15 @@ $(function () {
             }
           },
           {
+            name: 'q-and-a-move-up',
+            '0%': {
+              "transform": "translateY(400px)"
+            },
+            '100%': {
+              "transform": "translateY(0px)"
+            }
+          },
+          {
             name: 'q-and-a-fade-in',
             '0%': {
               "opacity": "0",
@@ -176,22 +185,22 @@ $(function () {
             name: 'moving-in-from-right',
             '0%': {
               "opacity": "1",
-              "transform": "translateX(800px)"
+              "right" : "-100%"
             },
             '100%': {
               "opacity": "1",
-              "transform": "translateX(0px)"
+              "right" : "0%"
             }
           },
           {
             name: 'moving-out-to-right',
             '0%': {
               "opacity": "1",
-              "transform": "translateX(0px)"
+              "right" : "0%"
             },
             '100%': {
               "opacity": "1",
-              "transform": "translateX(800px)"
+              "right" : "-100%"
             }
           }
         ]);
@@ -205,8 +214,8 @@ $(function () {
         con.StopAndHideTimer = function(){
           $("#timer-red").pauseKeyframe();
           $('.sparkle').stop().animate({"opacity":0}, 100);
-          setTimeout(function(){
-            $(".timer").animate({"opacity":0}, 500);
+          setTimeout(function() {
+            $(".timer").animate({"opacity":0}, 250);
             is_timer_running = false;
           }, 500);
         }
@@ -214,7 +223,8 @@ $(function () {
         con.RevealAndPlayTimer = function(sec){
           con.ResetTimer();
           is_timer_running = true;
-          $(".timer, .sparkle").css('opacity',1);
+          $(".timer, .sparkle").transition({"opacity" : "1"}, 250, 'ease');
+
           var secs = sec + 's';
           $("#timer-red").playKeyframe({
             name: 'timer-red-move',
@@ -230,8 +240,11 @@ $(function () {
       
         con.ResetQuestion = function(){
           $(".ans-letter, .ans-text, .ans-diagonal, .ans-final, .ans-correct").css("opacity", 0);
-          $(".now-money, .no-pass, #now-money-2").css("opacity", 0);
-          $("#now-money-1").css("opacity", 1);
+
+          $(".money-and-pass").css("opacity", 0);
+          $("#map-lozenge-1").css("opacity", 1);
+          $("#map-lozenge-2").css("opacity", 0);
+
           $(".ans-main").css("opacity", 1);
           $(".ans-letter svg text").attr("fill", "#fff3ba");
           $(".ans-text svg text").attr("fill", "white");
@@ -239,6 +252,8 @@ $(function () {
           $(".ans-text svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
           $(".question, .answer").css("transform","translateY(400px)").playKeyframe("reset");
           con.ResetTimer();
+          
+          $(".ans-line").css("opacity", 0);
         }
       
         con.RevealQuestion = function(){
@@ -295,6 +310,8 @@ $(function () {
             $(".ans-text svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
             $(".ans-letter svg text").attr("fill", "#fff3ba");
             $(".ans-text svg text").attr("fill", "white");
+          
+            $(".ans-line").css("opacity", 0);
           }
           else{
             $("#answer-" + answer + " .ans-main").css("opacity", 1);
@@ -304,52 +321,80 @@ $(function () {
             $(".ans-text svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
             $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#fff3ba");
             $("#answer-" + answer + " .ans-text svg text").attr("fill", "white");
+            
+            $("#answer-" + answer + " .ans-line").css("opacity", 0);
           }
         }
       
         con.RevealAnswer = function(answer) {
+          $("#answer-" + answer + " .ans-letter").css("opacity", 1);
+          $("#answer-" + answer + " .ans-text").css("opacity", 1);
+          $("#answer-" + answer + " .ans-diagonal").css("opacity", 1);
+
           if (answer == "a") {
-            $("#answer-" + answer + " .ans-letter").css("opacity", 1);
-            $("#answer-" + answer + " .ans-text").css("opacity", 1);
-            $("#answer-" + answer + " .ans-diagonal").css("opacity", 1);
+            $(".ans-line").css("opacity", 1);
+
+            var ans_a_name = "#answer-a .ans-main, #answer-a .ans-letter, #answer-a .ans-text, #answer-a .ans-diagonal";
+            var ans_b_name = "#answer-b .ans-main, #answer-b .ans-letter, #answer-b .ans-text, #answer-b .ans-diagonal";
+            var ans_c_name = "#answer-c .ans-main, #answer-c .ans-letter, #answer-c .ans-text, #answer-c .ans-diagonal";
+            var ans_d_name = "#answer-d .ans-main, #answer-d .ans-letter, #answer-d .ans-text, #answer-d .ans-diagonal";
+
+            $(ans_a_name).css("transform", "translateX(-960px)");
+            $(ans_b_name).css("transform", "translateX(960px)");
+            $(ans_c_name).css("transform", "translateX(-960px)");
+            $(ans_d_name).css("transform", "translateX(960px)");
+            
             $(".question").playKeyframe({
               name: 'question-move-up-2',
               duration: "0.75s",
               timingFunction: 'ease'
             });
+
+            $(".answer").playKeyframe({
+              name: 'answer-move-up',
+              duration: "0.75s",
+              timingFunction: 'ease'
+            });
+
             setTimeout(function(){
-              $("#answer-c").playKeyframe({
+              $(ans_a_name).playKeyframe({
                 name: 'answer-move-from-left',
                 duration: "0.75s",
                 timingFunction: 'ease'
               });
               setTimeout(function(){
-                $("#answer-d").playKeyframe({
+                $(ans_b_name).playKeyframe({
                   name: 'answer-move-from-right',
                   duration: "0.75s",
                   timingFunction: 'ease'
                 });
               }, 100);
               setTimeout(function(){
-                $("#answer-a").playKeyframe({
+                $(ans_c_name).playKeyframe({
                   name: 'answer-move-from-left',
                   duration: "0.75s",
                   timingFunction: 'ease'
                 });
               }, 200);
               setTimeout(function(){
-                $("#answer-b").playKeyframe({
+                $(ans_d_name).playKeyframe({
                   name: 'answer-move-from-right',
                   duration: "0.75s",
-                  timingFunction: 'ease'
+                  timingFunction: 'ease',
+                  complete : function() {
+                    $(ans_a_name).css("transform", "translateX(0px)");
+                    $(ans_b_name).css("transform", "translateX(0px)");
+                    $(ans_c_name).css("transform", "translateX(0px)");
+                    $(ans_d_name).css("transform", "translateX(0px)");
+                    $(ans_a_name).resetKeyframe();
+                    $(ans_b_name).resetKeyframe();
+                    $(ans_c_name).resetKeyframe();
+                    $(ans_d_name).resetKeyframe();
+                    $(".ans-line").css("opacity", 0);
+                  }
                 });
               }, 300);
             }, 250);
-          }
-          else {
-            $("#answer-" + answer + " .ans-letter").animate({"opacity":"1"}, 250, "linear");
-            $("#answer-" + answer + " .ans-text").animate({"opacity":"1"}, 250, "linear");
-            $("#answer-" + answer + " .ans-diagonal").animate({"opacity":"1"}, 250, "linear");
           }
         }
       
@@ -361,9 +406,13 @@ $(function () {
           $("#answer-" + answer + " .ans-text svg").css("text-shadow", "none");
           $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#000000");
           $("#answer-" + answer + " .ans-text svg text").attr("fill", "#000000");
+            
+          $("#answer-" + answer + " .ans-line").css("opacity", 0);
         }
       
         con.CorrectAnswer = function(answer) {
+          var opa = $("#answer-" + answer + " .ans-final").css("opacity");
+
           $("#answer-" + answer + " .ans-main").css("opacity", 0);
           $("#answer-" + answer + " .ans-final").css("opacity", 0);
           $("#answer-" + answer + " .ans-correct").css("opacity", 1);
@@ -371,20 +420,86 @@ $(function () {
           $("#answer-" + answer + " .ans-text svg").css("text-shadow", "none");
           $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#000000");
           $("#answer-" + answer + " .ans-text svg text").attr("fill", "#000000");
+
+          setTimeout(function() {
+            $("#answer-" + answer + " .ans-main").css("opacity", 1);
+            $("#answer-" + answer + " .ans-final").css("opacity", 0);
+            $("#answer-" + answer + " .ans-correct").css("opacity", 0);
+            $("#answer-" + answer + " .ans-letter svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
+            $("#answer-" + answer + " .ans-text svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
+            $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#fff3ba");
+            $("#answer-" + answer + " .ans-text svg text").attr("fill", "white");
+
+            if (opa == 1) {
+              con.FinalAnswer(answer);
+            }
+          }, 250);
+
+          setTimeout(function() {
+            $("#answer-" + answer + " .ans-main").css("opacity", 0);
+            $("#answer-" + answer + " .ans-final").css("opacity", 0);
+            $("#answer-" + answer + " .ans-correct").css("opacity", 1);
+            $("#answer-" + answer + " .ans-letter svg").css("text-shadow", "none");
+            $("#answer-" + answer + " .ans-text svg").css("text-shadow", "none");
+            $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#000000");
+            $("#answer-" + answer + " .ans-text svg text").attr("fill", "#000000");
+          }, 500);
+
+          setTimeout(function() {
+            $("#answer-" + answer + " .ans-main").css("opacity", 1);
+            $("#answer-" + answer + " .ans-final").css("opacity", 0);
+            $("#answer-" + answer + " .ans-correct").css("opacity", 0);
+            $("#answer-" + answer + " .ans-letter svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
+            $("#answer-" + answer + " .ans-text svg").css("text-shadow", "2px 2px 2px rgba(0,0,0,1)");
+            $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#fff3ba");
+            $("#answer-" + answer + " .ans-text svg text").attr("fill", "white");
+
+            if (opa == 1) {
+              con.FinalAnswer(answer);
+            }
+          }, 750);
+
+          setTimeout(function() {
+            $("#answer-" + answer + " .ans-main").css("opacity", 0);
+            $("#answer-" + answer + " .ans-final").css("opacity", 0);
+            $("#answer-" + answer + " .ans-correct").css("opacity", 1);
+            $("#answer-" + answer + " .ans-letter svg").css("text-shadow", "none");
+            $("#answer-" + answer + " .ans-text svg").css("text-shadow", "none");
+            $("#answer-" + answer + " .ans-letter svg text").attr("fill", "#000000");
+            $("#answer-" + answer + " .ans-text svg text").attr("fill", "#000000");
+          }, 1000);
+            
+          $("#answer-" + answer + " .ans-line").css("opacity", 0);
         }
       
-        con.RevealNoPassNowMoney = function(){
-          $(".no-pass, .now-money").playKeyframe({
+        con.RevealMoneyAndPass = function(){
+          $(".money-and-pass").playKeyframe({
             name: 'moving-in-from-right',
             duration: "0.57s",
             timingFunction: 'ease'
           });
         }
       
-        con.HideNoPassNowMoney = function(){
-          $(".no-pass, .now-money").playKeyframe({
+        con.LowerMoneyAndPass = function(){
+          $(".money-and-pass").css("transform", "translateY(225px)");
+        }
+      
+        con.MoveUpMoneyAndPass = function(){
+          $(".money-and-pass").transition({"transform": "translateY(0px)"}, 750, 'ease');
+        }
+      
+        con.HideMoneyAndPass = function(){
+          $(".money-and-pass").playKeyframe({
             name: 'moving-out-to-right',
             duration: "0.75s",
+            timingFunction: 'ease'
+          });
+        }
+      
+        con.MoveUpQAndA = function() {
+          $(".question, .answer").playKeyframe({
+            name: 'q-and-a-move-up',
+            duration: "0.5s",
             timingFunction: 'ease'
           });
         }
@@ -412,9 +527,15 @@ $(function () {
           });
         }
       
+        /*
+        con.AppearQAndA = function(){
+          $(".question, .answer").playKeyframe('q-and-a-move-up');
+        }
+      
         con.DisappearQAndA = function(){
           $(".question, .answer").playKeyframe('q-and-a-move-down');
         }
+        */
       
         con.ResetMoneyStrap = function(){
           $(".money, .total-money").css("opacity", 0).playKeyframe("reset");
@@ -531,6 +652,37 @@ $(function () {
           }, 500);
         }
       
+        con.ResetFinalStrap = function(){
+          $(".final-strap").css("opacity", 0).playKeyframe("reset");
+          $(".fq-money").css("clip-path", "inset(0 100% 0 0)").playKeyframe("reset");
+        }
+        
+        con.RevealFinalStrap = function(){
+          $(".final-strap").css("opacity", 1).playKeyframe({
+            name: 'answer-move-up',
+            duration: "0.25s",
+            timingFunction: 'linear'
+          });
+          setTimeout(function(){
+            $(".fq-money").playKeyframe({
+              name: 'top-money-text-reveal',
+              duration: "0.25s",
+              timingFunction: 'linear'
+            });
+          }, 500);
+        }
+      
+        con.HideFinalStrap = function(){
+          $(".final-strap").playKeyframe({
+            name: 'q-and-a-move-down',
+            duration: "0.25s",
+            timingFunction: 'linear'
+          });
+          setTimeout(function(){
+            con.ResetFinalStrap();
+          }, 500);
+        }
+      
         con.ResetLifelineHolder = function(){
           $(".lifeline-holder").css("opacity", "0").playKeyframe("reset");
         }
@@ -608,8 +760,10 @@ $(function () {
         con.FiftyFiftyAction = function(answer1, answer2) {
           $("#ans-letter-" + answer1).css("opacity", 0);
           $("#ans-text-" + answer1).css("opacity", 0);
+          $("#answer-" + answer1 + " .ans-diagonal").css("opacity", 0);
           $("#ans-letter-" + answer2).css("opacity", 0);
           $("#ans-text-" + answer2).css("opacity", 0);
+          $("#answer-" + answer2 + " .ans-diagonal").css("opacity", 0);
         }
       
         //
@@ -618,7 +772,6 @@ $(function () {
           con.SVGTextCustomize(".question");
           con.SVGTextCustomize(".ans-letter");
           con.SVGTextCustomize(".ans-text");
-          con.SVGTextCustomize(".no-pass");
           con.SVGTextCustomize(".money");
           con.SVGTextCustomize(".top-text");
           con.SVGTextCustomize(".old-top-money");
@@ -639,6 +792,7 @@ $(function () {
         con.ResetQuestion();
         con.ResetMoneyStrap();
         con.ResetCommStrap();
+        con.ResetFinalStrap();
         con.ResetLifelineHolder();
         con.ResetContestantStrap();
         con.ResetFFFAnswerOrder();
@@ -656,11 +810,26 @@ $(function () {
 
         onValue(ref(db, dbKey), (snapshot) => {
             const data = snapshot.val();
+
+            if(data.reload == 1) {
+              location.reload();
+              upd("reload", 0);
+            }     
+
+            if(data.reload_main_mt == 1) {
+              location.reload();
+              upd("reload_main_mt", 0);
+            }     
             
             con.ScaleText();
           
-            con.TextUpdateData(".cont-name", eval("data.cont_name_" + data.cont_to_introduce).toUpperCase(), 1);
-            con.TextUpdateData(".cont-hometown", eval("data.cont_hometown_" + data.cont_to_introduce).toUpperCase(), 1);
+            if (eval("data.cont_name_" + data.cont_to_introduce).toUpperCase() != undefined) {
+              con.TextUpdateData(".cont-name", eval("data.cont_name_" + data.cont_to_introduce).toUpperCase(), 1);
+            }
+          
+            if (eval("data.cont_hometown_" + data.cont_to_introduce).toUpperCase() != undefined) {
+              con.TextUpdateData(".cont-hometown", eval("data.cont_hometown_" + data.cont_to_introduce).toUpperCase(), 1);
+            }
           
             con.TextUpdateData(".question", data.question_line_1, 1);
             con.TextUpdateData(".question", data.question_line_2, 2);
@@ -693,20 +862,25 @@ $(function () {
               con.TextUpdateData("#fs-times-" + i, eval("data.fff_total_times_" + i).toFixed(2), 1);
             }
 
-            if(data.lifeline_on_pass == false) {
-              con.TextUpdateData(".no-pass", "KHÔNG THỂ CHUYỂN", 1);
+            if (data.is_a_round_played == true) {
+              con.TextUpdateData(".now-pass", "KHÔNG CÒN CHUYỂN", 1);
             }
             else {
-              con.TextUpdateData(".no-pass", "CÓ THỂ CHUYỂN", 1);
+              if(data.lifeline_on_pass == false) {
+                con.TextUpdateData(".now-pass", "KHÔNG THỂ CHUYỂN", 1);
+              }
+              else {
+                con.TextUpdateData(".now-pass", "CÓ THỂ CHUYỂN", 1);
+              }
             }
 
             if(data.q_now == data.q_top) {
-              $("#now-money-1").css("opacity", 0);
-              $("#now-money-2").css("opacity", 1);
+              $("#map-lozenge-1").css("opacity", 0);
+              $("#map-lozenge-2").css("opacity", 1);
             }
             else {
-              $("#now-money-1").css("opacity", 1);
-              $("#now-money-2").css("opacity", 0);
+              $("#map-lozenge-1").css("opacity", 1);
+              $("#map-lozenge-2").css("opacity", 0);
             }
 
             if(eval("data.mt_value_" + data.q_now) != undefined){
@@ -793,7 +967,9 @@ $(function () {
             }          
             
             if(data.show_fff_scoreboard == 1) {
-              $(".fs-main, .fs-name").css("opacity", 1);
+              $(".fs-main, .fs-name").css({"opacity": "1"});
+              $(".fs-main, .fs-name, .fs-score, .fs-times").css({"transform" : "translateX(960px)"});
+              $(".fs-main, .fs-name, .fs-score, .fs-times").transition({"transform" : "translateX(0px)"}, 500, "ease");
               upd("show_fff_scoreboard", 0);
             }
             if(data.show_fff_scoreboard_score == 1) {
@@ -805,7 +981,10 @@ $(function () {
               upd("show_fff_scoreboard_times", 0);
             }
             if(data.hide_fff_scoreboard == 1) {
+              $(".fs-main, .fs-name, .fs-score, .fs-times").transition({"transform" : "translateX(960px)"}, 500, "ease", function() {
+                $(".fs-main, .fs-name, .fs-score, .fs-times").css("transform", "translateX(0px)");
               con.ResetFFFScoreboard();
+              });
               upd("hide_fff_scoreboard", 0);
             }
           
@@ -847,20 +1026,28 @@ $(function () {
               con.StopAndHideTimer();
               upd("stop_timer", 0);
             }
-            if(data.reveal_no_pass_now_money == 1) {
-              con.RevealNoPassNowMoney();
-              upd("reveal_no_pass_now_money", 0);
+            if(data.lower_money_and_pass == 1) {
+              con.LowerMoneyAndPass();
+              upd("lower_money_and_pass", 0);
             }
-            if(data.hide_no_pass_now_money == 1) {
-              con.HideNoPassNowMoney();
-              upd("hide_no_pass_now_money", 0);
+            if(data.move_up_money_and_pass == 1) {
+              con.MoveUpMoneyAndPass();
+              upd("move_up_money_and_pass", 0);
+            }
+            if(data.reveal_money_and_pass == 1) {
+              con.RevealMoneyAndPass();
+              upd("reveal_money_and_pass", 0);
+            }
+            if(data.hide_money_and_pass == 1) {
+              con.HideMoneyAndPass();
+              upd("hide_money_and_pass", 0);
             }
             if(data.temp_hide_main_question == 1) {
               con.MoveDownQAndA();
               upd("temp_hide_main_question", 0);
             }
             if(data.temp_reveal_main_question == 1) {
-              con.FadeInQAndA();
+              con.MoveUpQAndA();
               upd("temp_reveal_main_question", 0);
             }
           
@@ -935,6 +1122,17 @@ $(function () {
             if(data.hide_comm_strap == 1) {
               con.HideCommStrap();
               upd("hide_comm_strap", 0);
+            }
+          
+            con.TextUpdateData(".fq-text", "CÂU HỎI CUỐI CÙNG");
+            con.TextUpdateData(".fq-money", accounting.formatMoney(eval("data.mt_value_" + data.q_top)));
+            if(data.reveal_final_strap == 1) {
+              con.RevealFinalStrap();
+              upd("reveal_final_strap", 0);
+            }            
+            if(data.hide_final_strap == 1) {
+              con.HideFinalStrap();
+              upd("hide_final_strap", 0);
             }
           
             if(data.reveal_top_money_strap_14 == 1) {

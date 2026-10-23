@@ -149,6 +149,16 @@ $(function () {
 
         onValue(ref(db, dbKey), (snapshot) => {
             const data = snapshot.val();
+
+            if(data.reload == 1) {
+              location.reload();
+              upd("reload", 0);
+            }     
+
+            if(data.reload_player == 1) {
+              location.reload();
+              upd("reload_player", 0);
+            }     
             
             //con.ScaleText();
           

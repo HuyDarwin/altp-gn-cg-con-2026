@@ -220,6 +220,16 @@ $(function () {
 
         onValue(ref(db, dbKey), (snapshot) => {
             const data = snapshot.val();
+
+            if(data.reload == 1) {
+              location.reload();
+              upd("reload", 0);
+            }     
+
+            if(data.reload_player == 1) {
+              location.reload();
+              upd("reload_player", 0);
+            }     
             
             //con.ScaleText();
           
@@ -238,7 +248,11 @@ $(function () {
           
             $(".holder").css("top", "5000px");
             $("#background").css("top", "0px");
-            if(data.mode == 1) {
+            
+            if(data.mode == -1) {
+              $("#holder-home").css("top", "0px");
+            }
+            else if(data.mode == 1) {
               if (number_of_player == 7) {
                 $("#holder-1-host").css("top", "0px");
               }

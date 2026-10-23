@@ -67,6 +67,12 @@ textarea{
   filter: brightness(50%);
 }
 
+/* holder-home */
+
+#holder-home{
+  top:0px;
+}
+
 /* holder-1 */
 
 #holder-1{

@@ -249,6 +249,25 @@ $(function () {
             }
           }, 25);
         }
+
+        // Sheet Stubs Cleaning
+
+        con.CleanSheetStubs = function(sheet) {
+            for (let cellRef in sheet) {
+                if (cellRef[0] === '!') continue;
+
+                const cell = sheet[cellRef];
+
+                if (cell && cell.t === 'z') {
+                    cell.t = 's';
+                    cell.v = '';
+                }
+            }
+
+            return sheet;
+        }
+
+		    // SVG Text
       
         con.SVGTextCustomize = function (destination) {
           var lines = Number($(destination + " svg").attr("data-lines"));
@@ -284,9 +303,11 @@ $(function () {
             
             for (var i = 1; i <= numlines; i++) {
               var width = Math.min($(destination + " svg #line_" + i).get(0).getBBox().width / $(destination + " svg").width() * 100, 100);
+
               if (maxwidth != 0) {
                 width = Math.min(width, $(destination + " svg #line_" + i).get(0).getBBox().width / maxwidth * 100);
               }
+
               $(destination + " svg #line_" + i).attr("textLength", width + "%");
             }
           }
@@ -385,6 +406,18 @@ $(function () {
           }
           con.SVGTextCustomize(destination);
         }
+
+        //
+
+        const promises = [];
+
+        for (const font of document.fonts) {
+            promises.push(document.fonts.load(`50px "${font.family}"`));
+        }
+
+        Promise.all(promises).then(() => {
+            con.ScaleText?.();
+        });
 
         //
 

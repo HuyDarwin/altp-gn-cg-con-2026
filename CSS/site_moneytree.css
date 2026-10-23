@@ -4,13 +4,13 @@ body {
 
 @keyframes zoomInOut {
   0% {
-    transform: translate(2%, 75%) scale(1);
+    transform: translateY(0%) scale(1);
   }
   50% {
-    transform: translate(0%, 75%) scale(1.1);
+    transform: translateY(-5%) scale(1.1);
   }
   100% {
-    transform: translate(2%, 75%) scale(1);
+    transform: translateY(0%) scale(1);
   };
 }
 
@@ -72,6 +72,7 @@ body {
   clip-path:inset(0% 0% 0% 62.5%);
 }
 
+/*
 #ll-pass{
   left:63.8%;
   top:9.2%;
@@ -82,12 +83,13 @@ body {
 #ll-pass .ll-used{
   opacity:0;
 }
+*/
 
 .mt-cont-name{
-  width:22%;
-  height:6%;
-  top:8%;
-  left:76%;
+  width:20.75%;
+  height:5.6%;
+  left:68.5%;
+  top:6%;
 }
 
 .mt-cont-name svg{
@@ -99,17 +101,16 @@ body {
 
 .mt-cont-name svg text{
   font-family:"Copperplate-Viethoa";
-  font-size:50px;
+  font-size:40px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translateY(85%);
 }
 
 .mt-q-left{
-  width:22%;
-  height:3%;
-  top:14.25%;
-  left:76%;
+  width:20.75%;
+  height:3.8%;
+  left:68.5%;
+  top:16.2%;
 }
 
 .mt-q-left svg{
@@ -124,9 +125,35 @@ body {
   font-size:28px;
   text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translateY(80%);
 }
 
+.ll-pass-lozenge{
+  width:23.5%;
+  height:5%;
+  left:67%;
+  top:11%;
+}
+
+.ll-pass-lozenge-img{
+  width:100%;
+  height:100%;
+  top:0%;
+  left:0%;
+}
+
+.ll-pass-lozenge svg{
+  left:10%;
+  width:80%;
+  height:100%;
+  top:0%;
+
+  font-family:"Copperplate-Viethoa";
+  font-size:34px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+}
+
+/*
 .mt-c-left{
   width:22%;
   height:3%;
@@ -148,11 +175,12 @@ body {
   fill:white;
   transform:translateY(80%);
 }
+*/
 
 .moneytree{
   width:38.5%;
   height:76%;
-  top:23%;
+  top:21%;
   right:0%;
   line-height: 0.7;
 	font-size: 0;
@@ -160,184 +188,482 @@ body {
   table-layout:fixed;
 }
 
+.separator-wrap {
+    position: absolute;
+    height: 100%;
+    right: 37.5%;
+    width: auto;
+}
+
+.seperator {
+    height: 100%;
+    display: block;
+}
+
+.separator-wrap::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -20%;
+    width: calc(100% + 10px);
+    height: 20%;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 220, 0, 0.2) 20%,
+        rgba(255, 255, 120, 1) 50%,
+        rgba(255, 220, 0, 0.2) 80%,
+        transparent 100%
+    );
+
+    filter: blur(3px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+
+    animation: separatorSweep 5s linear infinite;
+}
+
+@keyframes separatorSweep {
+    0% {
+        transform: translateY(0);
+    }
+
+    70% {
+        transform: translateY(1350%);
+    }
+
+    100% {
+        transform: translateY(1350%);
+    }
+}
+
 .moneyTr{
   position:relative;
 }
 
-.moneyTd-prize{
-  width:74.25%;
-  height:100%;
-  top:0%;
-  left:15.75%;
+@keyframes lozengeLineSweep {
+    0% {
+        clip-path:inset(0% 0% 0% 100%);
+    }
+
+    15% {
+        clip-path:inset(0% 0% 0% 60%);
+    }
+
+    35% {
+        clip-path:inset(0% 60% 0% 0%);
+    }
+
+    50% {
+        clip-path:inset(0% 100% 0% 0%);
+    }
+
+    100% {
+        clip-path:inset(0% 100% 0% 0%);
+    }
 }
 
-.moneyTd-prize svg{
+.lozenge-line-bright {
+  background-image: url("../Assets/Moneytree_Lozenge/lozenge_line_bright.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+
+  filter: blur(1px);
+
+  filter:
+      drop-shadow(0 0 15px #fff);
+
   width:100%;
   height:100%;
   top:0%;
   left:0%;
-  color:red;
+
+  animation: lozengeLineSweep 4s linear infinite;
+}
+
+.moneyTd-prize,
+.moneyTd-inner-prize {
+    position: absolute;
+    width: 74.25%;
+    height: 100%;
+    top: 0;
+    left: 5.5%;
+    box-sizing: border-box;
+}
+
+.moneyTd-prize svg,
+.moneyTd-inner-prize svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#moneyTd-inner-correct, #moneyTd-inner-milestone, #moneyTd-inner-lp, #moneyTd-inner-eliminated, #moneyTd-inner-normal {
+  transform-origin: right;
 }
 
 #moneyTd-lp{
-  background-image: url("../Assets/lq.png");
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:2;
+  width:96.5%;
+  height:5.85%;
+  /*height:7%;*/
+  top:0%;
+  left:3.5%;
+  position:relative;
+  overflow: visible;
+}
+
+#moneyTd-lp .moneyTd-prize svg text {
+  font-family:"Copperplate";
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+}
+
+@keyframes opacityOut {
+    0% {
+        opacity:1;
+    }
+
+    50% {
+        opacity:1;
+    }
+
+    100% {
+        opacity:0;
+    }
+}
+
+@keyframes scaleOut {
+    0% {
+        transform:scale(1);
+        margin-top:-0.575%;
+        padding-top:0.575%;
+        margin-bottom:-0.575%;
+        padding-bottom:0.575%;
+        opacity:1;
+    }
+
+    50% {
+        transform:scale(0.943);
+        margin-top:0;
+        padding-top:0;
+        margin-bottom:0;
+        padding-bottom:0;
+        opacity:1;
+    }
+
+    100% {
+        transform:scale(0.943);
+        margin-top:0;
+        padding-top:0;
+        margin-bottom:0;
+        padding-bottom:0;
+        opacity:0;
+    }
+}
+
+@keyframes scaleOutText {
+    0% {
+        transform:scale(1);
+    }
+
+    50% {
+        transform:scale(0.79);
+    }
+
+    100% {
+        transform:scale(0.79);
+    }
+}
+
+#moneyTd-lp-inner{
+  background-image: url("../Assets/Moneytree_Lozenge/last_question.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top:-0.575%;
+  padding-top:0.575%;
+  margin-bottom:-0.575%;
+  padding-bottom:0.575%;
+  width:calc(100 / 94.4 * 100%);
+  height:100%;
+  /*height:7%;*/
+  top:0%;
+  left: calc((1 - 100 / 94.4) * 100%);
+  overflow: visible;
+
+  transform-origin: right;
+  /*
+  animation: scaleOut 0s linear forwards;
+  */
+}
+
+#moneyTd-lp-inner .moneyTd-inner-prize svg text {
+  font-family:"Copperplate";
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  transform-origin: left;
+  /*
+  animation: scaleOutText 0s linear forwards;
+  */
+}
+
+#moneyTd-en{
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question.png");
   background-repeat: no-repeat;
 	background-size: cover;
 	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
   top:0%;
-  left:2.5%;
+  left:3.5%;
   position:relative;
+  opacity:0.5;
 }
 
-#moneyTd-lp svg text {
+#moneyTd-en svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translate(2%, 75%);
 }
 
-#moneyTd-et3{
+#moneyTd-m{
+  background-image: url("../Assets/Moneytree_Lozenge/milestone_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
 	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
   top:0%;
-  left:2.5%;
+  left:3.5%;
   position:relative;
-  opacity:0.25;
 }
 
-#moneyTd-et3 svg text {
+#moneyTd-m svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translate(2%, 75%);
 }
 
-#moneyTd-t{
+#moneyTd-n{
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
 	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
   top:0%;
-  left:2.5%;
+  left:3.5%;
   position:relative;
 }
 
-#moneyTd-t svg text {
+#moneyTd-n svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
-  fill:#dcd5d6;
-  transform:translate(2%, 75%);
-}
-
-#moneyTd-tm{
-	z-index:1;
-  width:97.5%;
-  height:6%;
-  top:0%;
-  left:2.5%;
-  position:relative;
-}
-
-#moneyTd-tm svg text {
-  font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translate(2%, 75%);
 }
 
 #moneyTd-nlp{
-  background-image: url("../Assets/lq.png");
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question.png");
   background-repeat: no-repeat;
 	background-size: cover;
-	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
+  /* height: 7%; */
   top:0%;
-  left:2.5%;
+  left:3.5%;
+	z-index:2;
   position:relative;
+  overflow: visible;
 }
 
 #moneyTd-nlp svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translate(2%, 75%);
-  animation: zoomInOut 1s linear infinite;
 }
 
-#moneyTd-nt{
-	z-index:1;
-  width:97.5%;
-  height:6%;
+#moneyTd-nlp-inner{
+  background-image: url("../Assets/Moneytree_Lozenge/last_question.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top:-0.575%;
+  padding-top:0.575%;
+  margin-bottom:-0.575%;
+  padding-bottom:0.575%;
+  width:calc(100 / 94.4 * 100%);
+  height:100%;
+  /*height:7%;*/
   top:0%;
-  left:2.5%;
+  left: calc((1 - 100 / 94.4) * 100%);
+  overflow: visible;
+
+  transform-origin: right;
+}
+
+#moneyTd-nlp-inner .moneyTd-inner-prize svg text {
+  font-family:"Copperplate";
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  /* animation: zoomInOut 1s linear infinite; */
+
+  transform-origin: left;
+}
+
+#moneyTd-nm{
+  background-image: url("../Assets/Moneytree_Lozenge/milestone_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:3;
+  width:96.5%;
+  height:5.85%;
+  /* height: 7.5%; */
+  top:0%;
+  left:3.5%;
   position:relative;
 }
 
-#moneyTd-nt svg text {
+#moneyTd-nm svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
-  fill:#dcd5d6;
-  transform:translate(2%, 75%);
-  animation: zoomInOut 1s linear infinite;
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
 }
 
-#moneyTd-ntm{
-	z-index:1;
-  width:97.5%;
-  height:6%;
+#moneyTd-nm-inner{
+  background-image: url("../Assets/Moneytree_Lozenge/milestone_question_now.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*
+  margin-top:-0.825%;
+  padding-top:0.825%;
+  margin-bottom:-0.825%;
+  padding-bottom:0.825%;
+  */
+  margin-top:-0.575%;
+  padding-top:0.575%;
+  margin-bottom:-0.575%;
+  padding-bottom:0.575%;
+  width:calc(100 / 94.4 * 100%);
+  height:100%;
+  /*height:7.5%;*/
   top:0%;
-  left:2.5%;
+  left: calc((1 - 100 / 94.4) * 100%);
+  overflow: visible;
+
+  transform-origin: right;
+}
+
+#moneyTd-nm-inner .moneyTd-inner-prize svg text {
+  font-family:"Copperplate";
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  /* animation: zoomInOut 1s linear infinite; */
+
+  transform-origin: left;
+}
+
+#moneyTd-nn{
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+	z-index:3;
+  width:96.5%;
+  height:5.85%;
+  /* height: 7.5%; */
+  top:0%;
+  left:3.5%;
   position:relative;
 }
 
-#moneyTd-ntm svg text {
+#moneyTd-nn svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
   fill:white;
-  transform:translate(2%, 75%);
-  animation: zoomInOut 1s linear infinite;
+}
+
+#moneyTd-nn-inner{
+  background-image: url("../Assets/Moneytree_Lozenge/normal_question_now.png");
+  background-repeat: no-repeat;
+	background-size: cover;
+  /*
+  margin-top:-0.825%;
+  padding-top:0.825%;
+  margin-bottom:-0.825%;
+  padding-bottom:0.825%;
+  */
+  margin-top:-0.575%;
+  padding-top:0.575%;
+  margin-bottom:-0.575%;
+  padding-bottom:0.575%;
+  width:calc(100 / 94.4 * 100%);
+  height:100%;
+  /*height:7.5%;*/
+  top:0%;
+  left: calc((1 - 100 / 94.4) * 100%);
+  overflow: visible;
+
+  transform-origin: right;
+}
+
+#moneyTd-nn-inner .moneyTd-inner-prize svg text {
+  font-family:"Copperplate";
+  font-size:56px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
+  /* animation: zoomInOut 1s linear infinite; */
+
+  transform-origin: left;
 }
 
 #moneyTd-cm{
+  background-image: url("../Assets/Moneytree_Lozenge/correct_milestone_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
 	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
   top:0%;
-  left:2.5%;
+  left:3.5%;
   position:relative;
 }
 
 #moneyTd-cm svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
-  fill:#ffb2d6;
-  transform:translate(2%, 75%);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
 }
 
 #moneyTd-cn{
+  background-image: url("../Assets/Moneytree_Lozenge/correct_question.png");
+  background-repeat: no-repeat;
+	background-size: cover;
 	z-index:1;
-  width:97.5%;
-  height:6%;
+  width:96.5%;
+  height:5.85%;
   top:0%;
-  left:2.5%;
+  left:3.5%;
   position:relative;
 }
 
 #moneyTd-cn svg text {
   font-family:"Copperplate";
-  font-size:48px;
-  text-shadow: 3px 2px 2px rgba(0,0,0,1);
-  fill:#cf387f;
-  transform:translate(2%, 75%);
+  font-size:42px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,1);
+  fill:white;
 }

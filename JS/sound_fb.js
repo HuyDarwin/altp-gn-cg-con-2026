@@ -37,11 +37,6 @@ $(function () {
 
         onValue(ref(db, dbKey), (snapshot) => {
             const data = snapshot.val();
-
-            if(data.reload == 1) {
-              location.reload();
-              upd("reload", 0);
-            }     
           
             if(data.sfx_intro == 1){
               con.PlaySound("Assets/01.%20HS%20Opening%20Titles.mp3", 1);
@@ -140,9 +135,42 @@ $(function () {
               con.PlaySound("Assets/m10_ld_question%20fix.mp3", 1);
               upd("sfx_po10_reveal", 0);
             }
+
+            if (data.sfx_mt_1 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_1.wav", 1);
+              upd("sfx_mt_1", 0);
+            }
+            if (data.sfx_mt_2 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_2.wav", 1);
+              upd("sfx_mt_2", 0);
+            }
+            if (data.sfx_mt_3 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_3.wav", 1);
+              upd("sfx_mt_3", 0);
+            }
+            if (data.sfx_mt_4 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_4.wav", 1);
+              upd("sfx_mt_4", 0);
+            }
+            if (data.sfx_mt_5 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_5.wav", 1);
+              upd("sfx_mt_5", 0);
+            }
+            if (data.sfx_mt_6 == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/money_tree_6.wav", 1);
+              upd("sfx_mt_6", 0);
+            }
+            if (data.sfx_ll_pass_appear == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/pass_appear.mp3", 1);
+              upd("sfx_ll_pass_appear", 0);
+            }
+            if (data.sfx_ll_pass_ping == 1) {
+              con.PlaySound("Assets/Moneytree and Question SFX/pass.mp3", 1);
+              upd("sfx_ll_pass_ping", 0);
+            }
           
             if(data.sfx_reveal_2 == 1) {
-              con.PlaySound("Assets/reveal%202%20sfx.mp3", 1);
+              con.PlaySound("Assets/reveal%202%20sfx.mp3", 2);
               upd("sfx_reveal_2", 0);
             }
             if(data.sfx_reveal_pass == 1) {
@@ -161,20 +189,20 @@ $(function () {
                 con.PlaySound("Assets/mus_game_light_down_q_05.wav", 2);
               }
               else if (data.q_now == 6 || data.q_now == 11) {
-                con.PlaySound("Assets/mus_game_light_down_q_06.wav", 2);
+                con.PlaySound("Assets/mus_game_light_down_q_05.wav", 2);
               }
               else if (data.q_now == 7 || data.q_now == 12) {
-                con.PlaySound("Assets/mus_game_light_down_q_07and12.wav", 2);
+                con.PlaySound("Assets/mus_game_light_down_q_06.wav", 2);
               }
               else if (data.q_now == 8 || data.q_now == 13) {
-                con.PlaySound("Assets/mus_game_light_down_q_08and13.wav", 2);
+                con.PlaySound("Assets/mus_game_light_down_q_07and12.wav", 2);
               }
               else if (data.q_now == 9 || data.q_now == 14) {
-                con.PlaySound("Assets/mus_game_light_down_q_09and14.wav", 2);
+                con.PlaySound("Assets/mus_game_light_down_q_08and13.wav", 2);
               }
               else if (data.q_now == 10 || data.q_now == 15) {
+                con.PlaySound("Assets/mus_game_light_down_q_09and14.wav", 2);
                 //con.PlaySound("Assets/mus_game_light_down_q_10and15.wav", 2);
-                con.PlaySound("Assets/mus_game_light_down_q_05.wav", 2);
               }
               
               upd("sfx_lights_down", 0);
@@ -304,11 +332,11 @@ $(function () {
                 con.PlaySound("Assets/q15_correct.mp3", 1);
               }
               else if(data.q_now == data.q_milestone){
-                con.PlaySound("Assets/mus_game_question_winstep_10.wav", 1);
+                con.PlaySound("Assets/q5_correct.mp3", 1);
               }
               else{
                 if (data.q_now <= 5) {
-                  con.PlaySound("Assets/fastest_finger_reveal_times.mp3", 1);
+                  con.PlaySound("Assets/q1_to_q4_correct.mp3", 1);
                 }
                 else {
                   con.PlaySound("Assets/q" + data.q_now + "_correct.mp3", 1);
@@ -328,6 +356,18 @@ $(function () {
                 setTimeout(function(){
                   con.StopSound(3);
                 }, 500);
+              }
+
+              if(data.q_top == data.q_now) {
+                con.PlaySound("Assets/q15_lose.mp3", 1);
+              }
+              else{
+                if (data.q_now <= 5) {
+                  con.PlaySound("Assets/q1_to_q5_lose.mp3", 1);
+                }
+                else {
+                  con.PlaySound("Assets/q" + data.q_now + "_lose.mp3", 1);
+                }
               }
               
               con.PlaySound("Assets/mus_game_question_lost_06.wav", 2);

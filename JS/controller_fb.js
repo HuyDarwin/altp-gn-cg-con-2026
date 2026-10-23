@@ -223,7 +223,7 @@ $(function () {
               timer--;
               upd("timer", timer);
               if(timer == 0 && is_revealing_main_question) {
-                upd("hide_no_pass_now_money", 1);
+                upd("hide_money_and_pass", 1);
                 $("#h4s-main-3").html("Chạy đồng hồ");
                 timer_counter = 0;        
                 upd("sfx_stop_timer", 1);
@@ -536,6 +536,8 @@ $(function () {
           upd("answer_fifty_fifty_b", answer_fifty_fifty_b);
           upd("answer_fifty_fifty_c", answer_fifty_fifty_c);
           upd("answer_fifty_fifty_d", answer_fifty_fifty_d);
+
+          upd("explaining_the_moneytree_mode", 0);
         }
       
         // Lifelines Function
@@ -789,7 +791,7 @@ $(function () {
           else if(stq_counter == 2) {
             upd("hide_main_question", 1);
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
             
             is_revealing_main_question = false;
             upd("stop_q_bed", 1);
@@ -812,9 +814,20 @@ $(function () {
         
         //
       
-
         $(".reload").click(function(){
           upd("reload", 1);
+        });
+
+        $(".reload-main-mt").click(function(){
+          upd("reload_main_mt", 1);
+        });
+
+        $(".reload-player").click(function(){
+          upd("reload_player", 1);
+        });
+
+        $(".reload-vidwall").click(function(){
+          upd("reload_vidwall", 1);
         });
       
         $(".reload-auth").click(function(){
@@ -822,12 +835,25 @@ $(function () {
         });
       
         $(".to-main").click(function(){
-          $(".screen-iframe").css("opacity",0);
-          $("#i-main").css("opacity",1);
+          enb(".to-main, .to-moneytree, .to-vidwall");
+          dib(this);
+
+          $(".screen-iframe").css("opacity", 0);
+          $("#i-main").css("opacity", 1);
         });
         $(".to-moneytree").click(function(){
-          $(".screen-iframe").css("opacity",0);
-          $("#i-moneytree").css("opacity",1);
+          enb(".to-main, .to-moneytree, .to-vidwall");
+          dib(this);
+
+          $(".screen-iframe").css("opacity", 0);
+          $("#i-moneytree").css("opacity", 1);
+        });
+        $(".to-vidwall").click(function(){
+          enb(".to-main, .to-moneytree, .to-vidwall");
+          dib(this);
+
+          $(".screen-iframe").css("opacity", 0);
+          $("#i-vidwall").css("opacity", 1);
         });
       
         $(".load-c-info").click(function(){
@@ -848,8 +874,12 @@ $(function () {
           var reader = new FileReader();
           reader.onload = function(e) {
             var data = e.target.result;
-            var workbook = XLSX.read(e.target.result);
+            var workbook = XLSX.read(e.target.result, { 
+              sheetStubs: true 
+            });
             var sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+            con.CleanSheetStubs(sheet);
 
             contestants = [];
 
@@ -871,8 +901,12 @@ $(function () {
           var reader = new FileReader();
           reader.onload = function(e) {
             var data = e.target.result;
-            var workbook = XLSX.read(e.target.result);
+            var workbook = XLSX.read(e.target.result, { 
+              sheetStubs: true 
+            });
             var sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+            con.CleanSheetStubs(sheet);
 
             mt_value = [];
             secs = [];
@@ -953,7 +987,7 @@ $(function () {
             upd("correct_ans_player", "");
             upd("note", "");
           }
-         else  if (index == 1) {
+         else if (index == 1) {
             final_ans = "";
             upd("final_ans", "");
             correct_ans = "";
@@ -996,9 +1030,14 @@ $(function () {
           var reader = new FileReader();
           reader.onload = function(e) {
             var data = e.target.result;
-            var workbook = XLSX.read(e.target.result);
+            var workbook = XLSX.read(e.target.result, { 
+              sheetStubs: true 
+            });
             var fff_sheet = workbook.Sheets[workbook.SheetNames[0]];
             var main_sheet = workbook.Sheets[workbook.SheetNames[1]];
+
+            con.CleanSheetStubs(fff_sheet);
+            con.CleanSheetStubs(main_sheet);
 
             fff_questions = [];
             main_questions = [];
@@ -1152,8 +1191,12 @@ $(function () {
           var reader = new FileReader();
           reader.onload = function(e) {
             var data = e.target.result;
-            var workbook = XLSX.read(e.target.result);
+            var workbook = XLSX.read(e.target.result, { 
+              sheetStubs: true 
+            });
             var sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+            con.CleanSheetStubs(sheet);
 
             switch_questions = [];
             
@@ -1349,6 +1392,26 @@ $(function () {
           dib("#" + this.id);
         });
       
+        $("#sm-home").click(function(){
+          $(".h4-system").css("top","1920px");
+          $("#h4s-home").css("top","100px");
+          mode = -1;
+          upd("mode", mode);
+        });
+
+        $(".vidwall-zoom-out").click(function() {
+          upd("vw_zoom_out_logos", 1);
+          dib(this);
+          enb(".vidwall-he");
+        });
+
+        $(".vidwall-he").click(function() {
+          upd("sfx_next_player_3", 1);
+          upd("vw_host_entrance", 1);
+          dib(this);
+          enb(".vidwall-zoom-out");
+        });
+      
         $("#sm-fff").click(function(){
           $(".h4-system").css("top","1920px");
           $("#h4s-fff").css("top","100px");
@@ -1362,6 +1425,9 @@ $(function () {
             upd("sfx_introduce_contestants", 1);
             $(this).html("NC1");
             introduce_contestants_counter++;
+
+            // Video Wall
+            upd("vw_start_intro_cont", 1);
           }
           else if(introduce_contestants_counter == 1) {
             upd("show_introduce_contestants", 1);
@@ -1399,6 +1465,12 @@ $(function () {
             upd("cont_to_introduce", 1);
             $(this).html("GT người chơi");
             introduce_contestants_counter = 0;
+
+            // Video Wall
+            upd("vw_stop_intro_cont", 1);
+            setTimeout(function() {
+              upd("vw_start_fff", 1);
+            }, 2000);
           }
         });
       
@@ -1431,6 +1503,9 @@ $(function () {
             upd("answer_d_opacity", 1);
             dib("#h4s-fff-2");
             upd("sfx_fff_3_stabs", 1);
+
+            // Video Wall
+            upd("vw_ready_to_answer_fff", 1);
             
             setTimeout(function(){
               upd("sfx_fff_think", 1);
@@ -1441,6 +1516,9 @@ $(function () {
               
               PlayTimer(15);
               fff_epoch = Date.now();
+
+              // Video Wall
+              upd("vw_start_answering_fff", 1);
             }, 1000);
             
             setTimeout(function(){
@@ -1448,6 +1526,9 @@ $(function () {
               upd("hide_fff_q_and_a", 1);
               enb("#h4s-fff-3");
               upd("allow_answering_fff", 0);
+
+              // Video Wall
+              upd("vw_stop_answering_fff", 1);
             }, 16000);
           }
         });
@@ -1577,6 +1658,9 @@ $(function () {
             
             $(this).html("Ẩn BXH");
             fff_scoreboard_counter++;
+
+            // Video Wall
+            upd("vw_stop_fff", 1);
           }
           else if(fff_scoreboard_counter == 4){
             for (var i = 1; i <= num_of_cs; i++) {
@@ -1681,6 +1765,20 @@ $(function () {
       
         $("#h4s-main-1").click(function(){
           upd("sfx_lights_down", 1);
+
+          // Video wall
+          upd("vw_red_to_blue", 1);
+          setTimeout(function() {
+            upd("vw_setup_logo_red_empty", 1);
+          }, 1000);
+
+          if (q_top == q_now) {
+            upd("reveal_final_strap", 1);
+            upd("sfx_reveal_2", 1);
+            setTimeout(function() {
+              upd("hide_final_strap", 1);
+            }, 3000);
+          }
         });
       
         var question_reveal_counter = 0;
@@ -1711,15 +1809,24 @@ $(function () {
             is_revealing_main_question = true;
             upd("reveal_main_question", 1);
 
-            upd("reveal_no_pass_now_money", 1);
+            upd("lower_money_and_pass", 1);
+            upd("reveal_money_and_pass", 1);
             
             upd("sfx_q_bed", 1);
             
             $(this).html("Hiện đáp án A");
             
             question_reveal_counter++;
+
+            // Video wall
+            upd("vw_red_to_blue", 1);
+            setTimeout(function() {
+              upd("vw_setup_logo_red_empty", 1);
+            }, 1000);
           }
           else if(question_reveal_counter == 1) {
+            upd("move_up_money_and_pass", 1);
+
             upd("answer_a_opacity", 1);
             
             upd("reveal_main_answer_a", 1);
@@ -1785,7 +1892,7 @@ $(function () {
               $(".llo-activate-pass").css("background-color", "red");
             }, 1000);
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
             
             upd("stop_timer", 1);
             PauseTimer();
@@ -1816,12 +1923,17 @@ $(function () {
             upd("next_cont_id", next_cont);
             
             upd("next_cont_info_opacity", 1);
+
+            // Video wall
+            upd("vw_reveal_pass", 1);
           }
           else if(pass_counter == 1) {
             upd("temp_hide_main_question", 1);
             is_revealing_main_question = false;
             $(this).html("NC tiếp");
             pass_counter++;
+
+            upd("move_up_money_and_pass", 1);
           }
           else if(pass_counter == 2) {
             upd("sfx_next_player_3", 1);
@@ -1831,11 +1943,17 @@ $(function () {
             
             $(this).html("Hiện câu hỏi");
             pass_counter++;
+
+            // Video wall
+            upd("vw_hide_pass_lozenge", 1);
+            setTimeout(function() {
+              upd("vw_hide_pass", 1);
+            }, 5000);
           }
           else if(pass_counter == 3) {
             upd("temp_reveal_main_question", 1);
 
-            upd("reveal_no_pass_now_money", 1);
+            upd("reveal_money_and_pass", 1);
 
             is_revealing_main_question = true;
             
@@ -1847,6 +1965,9 @@ $(function () {
             upd("timer", timer);
             $(this).html("Chuyển");
             pass_counter = 0;
+
+            // Video wall
+            upd("vw_red_to_blue", 1);
           }
         });
       
@@ -1868,7 +1989,7 @@ $(function () {
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
           }
         });
         $("#h4s-main-6").click(function(){
@@ -1889,7 +2010,7 @@ $(function () {
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
           }
         });
         $("#h4s-main-7").click(function(){
@@ -1910,7 +2031,7 @@ $(function () {
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
           }
         });
         $("#h4s-main-8").click(function(){
@@ -1931,7 +2052,7 @@ $(function () {
             dib("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
             enb("#h4s-main-9, #h4s-main-10");
 
-            upd("hide_no_pass_now_money", 1);
+            upd("hide_money_and_pass", 1);
           }
         });
         $("#h4s-main-9").click(function(){
@@ -1946,7 +2067,7 @@ $(function () {
           enb("#h4s-main-5, #h4s-main-6, #h4s-main-7, #h4s-main-8");
           dib("#h4s-main-9, #h4s-main-10");
 
-          upd("reveal_no_pass_now_money", 1);
+          upd("reveal_money_and_pass", 1);
         });
       
         var correct_answer_counter = 0;
@@ -1962,12 +2083,16 @@ $(function () {
             upd("reveal_correct_ans_" + correct_ans, 1);
             if (final_ans == correct_ans){
               upd("sfx_correct", 1);
+              /*
               if (q_now == q_top) {
                 $(this).html("Ẩn câu hỏi");
               }
               else{
                 $(this).html("Hiện tiền");
               }
+              */
+
+              $(this).html("Ẩn câu hỏi");
             }
             else{
               upd("sfx_wrong", 1);
@@ -1975,11 +2100,16 @@ $(function () {
               $(this).html("Ẩn câu hỏi");
             }
             correct_answer_counter++;
+
+            // Video wall
+            upd("vw_blue_to_red", 1);
           }
           else if(correct_answer_counter == 1) {
             upd("hide_main_question", 1);
             is_revealing_main_question = false;
+
             if (final_ans == correct_ans){
+              /*
               if (q_now == q_top) {
                 upd("total_winnings", mt_value[q_now - 1]);
                 $(".q-now-up").click();
@@ -1999,6 +2129,31 @@ $(function () {
                 $(this).html("Ẩn tiền");
                 correct_answer_counter = 3;
               }
+              */
+              if (q_now == q_top) {
+                upd("total_winnings", mt_value[q_now - 1]);
+                $(".q-now-up").click();
+
+                $(this).html("Công bố");
+                dib("#h4s-main-10");
+              }
+              else {
+                $(".q-now-up").click();
+                $(".main-next").click();
+
+                $(this).html("Công bố");
+                dib("#h4s-main-10");
+                if(!is_a_round_played) {
+                  lifeline_on_pass = true;
+                  upd("lifeline_on_pass", lifeline_on_pass);
+                  $(".llo-activate-pass").css("background-color","green");
+                }
+              }
+
+              // Video wall
+              upd("vw_show_prize_with_logo", 1);
+                
+              correct_answer_counter = 0;
             }
             else{
               if (q_now == q_top || q_top == 10) {
@@ -2034,7 +2189,11 @@ $(function () {
               $(".llo-activate-pass").css("background-color","green");
             }
             correct_answer_counter = 0;
+
+            // Video wall
+            upd("vw_blue_to_red", 1);
           }
+          /*
           else if(correct_answer_counter == 3) {
             if (true) {
               $(".q-now-up").click();
@@ -2065,20 +2224,31 @@ $(function () {
             
             correct_answer_counter = 0;
           }
+          */
         });
       
         var total_money_strap_counter = 0;
         $("#h4s-main-11").click(function(){
           if(total_money_strap_counter == 0) {
+            /*
             upd("reveal_total_money_strap", 1);
             upd("sfx_po10_reveal", 1);
+            */
             $(this).html("Ẩn tổng tiền");
             total_money_strap_counter++;
+
+            // Video wall
+            upd("vw_reveal_total_prize", 1);
           }
           else if (total_money_strap_counter == 1) {
+            /*
             upd("hide_total_money_strap", 1);
+            */
             $(this).html("Tổng tiền");
             total_money_strap_counter = 0;
+
+            // Video wall
+            upd("vw_total_prize_to_main", 1);
           }
         });
       
@@ -2087,7 +2257,7 @@ $(function () {
           if (is_revealing_main_question) {
             if (commercial_counter == 0) {
               upd("temp_hide_main_question", 1);
-              upd("hide_no_pass_now_money", 1);
+              upd("hide_money_and_pass", 1);
               upd("stop_music_for_comm", 1);
               $(this).html("Vào QC");
               commercial_counter++;
@@ -2097,6 +2267,8 @@ $(function () {
               upd("reveal_comm_strap", 1);
               $(this).html("Ẩn thanh");
               commercial_counter++;
+
+              upd("move_up_money_and_pass", 1);
             }
             else if (commercial_counter == 2) {
               upd("hide_comm_strap", 1);
@@ -2116,7 +2288,7 @@ $(function () {
             }
             else if (commercial_counter == 5) {
               upd("temp_reveal_main_question", 1);
-              upd("reveal_no_pass_now_money", 1);
+              upd("reveal_money_and_pass", 1);
               //upd("play_music_after_comm", 1);
               if(q_now <= 5 || final_ans == "") {
                 upd("sfx_q_bed", 1);
@@ -2392,6 +2564,65 @@ $(function () {
             $(this).css("background-color", "black");
           }
         });
+
+        $(".explain-the-rules").click(function(){
+          upd("explaining_the_moneytree_mode", 1);
+          dib(this);
+          upd("mt_explain_step_0", 1);
+          
+          $(".q-now-toggle, .q-top-toggle, .explain-the-rules").css("top", "99640px");
+          //$(".auto-set-follower").css("top", "99690px");
+          for (var i = 1; i <= 5; i++) {
+            $(".etr-step" + i).css("top", "640px");
+          }
+          $(".etr-end").css("top", "640px");
+
+          enb(".etr-step1");
+        });
+
+        $(".etr-step1").click(function(){
+          dib(this);
+          upd("mt_explain_step_1", 1);
+          enb(".etr-step2");
+        });
+
+        $(".etr-step2").click(function(){
+          dib(this);
+          upd("mt_explain_step_2", 1);
+          enb(".etr-step3");
+        });
+
+        $(".etr-step3").click(function(){
+          dib(this);
+          upd("mt_explain_step_3", 1);
+          enb(".etr-step4");
+        });
+
+        $(".etr-step4").click(function(){  
+          dib(this);
+          upd("mt_explain_step_4", 1);
+          enb(".etr-step5");
+        });
+
+        $(".etr-step5").click(function(){   
+          dib(this);
+          upd("mt_explain_step_5", 1);
+          enb(".etr-end");
+        });
+
+        $(".etr-end").click(function(){     
+          dib(this);
+
+          $(".q-now-toggle, .q-top-toggle, .explain-the-rules").css("top", "640px");
+          //$(".auto-set-follower").css("top", "690px");
+          for (var i = 1; i <= 5; i++) {
+            $(".etr-step" + i).css("top", "99640px");
+          }
+          $(".etr-end").css("top", "99640px");
+
+          enb(".explain-the-rules");
+          upd("explaining_the_moneytree_mode", 0);
+        });
       
         $(".q-top-up").click(function(){
           if(10 <= q_top + 1 && q_top + 1 <= 15) {
@@ -2472,6 +2703,8 @@ $(function () {
         //RenderMTFT();
         $("#qtf-15").click();
         $("#qnf-1").click();
+
+        $("#sm-home").click();
       
         //
 
@@ -2701,8 +2934,8 @@ $(function () {
               }
             }
           
-            con.TextUpdateData(".q-now-toggle", "Câu hỏi hiện tại: " + data.q_now);          
-            con.TextUpdateData(".q-top-toggle", "Mốc tối đa: " + data.q_top);
+            con.TextUpdateData(".q-now-toggle", "Hiện tại: " + data.q_now);          
+            con.TextUpdateData(".q-top-toggle", "Tối đa: " + data.q_top);
           
             $(".question-note").html(data.note);    
         });    
